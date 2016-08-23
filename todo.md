@@ -7,8 +7,8 @@ Translate readme.md into readme-fr.md
 
 # Examples
 
-[ ] Hello World
-[ ] Values
+[x] Hello World
+[x] Values
 [ ] Variables
 [ ] Constants
 [ ] For
