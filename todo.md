@@ -1,5 +1,12 @@
 Todo.md
 
+# General stuff
+
+Translate templates
+Translate readme.md into readme-fr.md
+
+# Examples
+
 [ ] Hello World
 [ ] Values
 [ ] Variables
@@ -65,3 +72,5 @@ Todo.md
 [ ] Exec'ing Processes
 [ ] Signals
 [ ] Exit
+
+
