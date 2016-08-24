@@ -1,5 +1,6 @@
-# Note that while slices are different types than arrays,
-# they are rendered similarly by `fmt.Println`.
+# A noter que, bien que les slices soient un type
+# différent des array, elles s'affichent de la même
+# manière avec `fmt.Println`.
 $ go run slices.go
 emp: [  ]
 set: [a b c]
@@ -13,9 +14,10 @@ sl3: [c d e f]
 dcl: [g h i]
 2d:  [[0] [1 2] [2 3 4]]
 
-# Check out this [great blog post](http://blog.golang.org/2011/01/go-slices-usage-and-internals.html)
-# by the Go team for more details on the design and
-# implementation of slices in Go.
+# Vous pouvez lire ce [bon article](http://blog.golang.org/2011/01/go-slices-usage-and-internals.html)
+# de l'équipe Go pour plus de détails sur le design et
+# l'implémentation des slices en Go.
 
-# Now that we've seen arrays and slices we'll look at
-# Go's other key builtin data structure: maps.
+# Maintenant que nous avons vu les arrays et les slices,
+# nous allons regarder une autre structure de donnée
+# clé : les maps
