@@ -14,7 +14,7 @@ Translate readme.md into readme-fr.md
 [ ] For
 [ ] If/Else
 [ ] Switch
-[ ] Arrays
+[x] Arrays
 [ ] Slices
 [ ] Maps
 [ ] Range
