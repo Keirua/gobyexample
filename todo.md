@@ -18,11 +18,11 @@ Translate readme.md into readme-fr.md
 [x] Slices
 [x] Maps
 [ ] Range
-[ ] Functions
-[ ] Multiple Return Values
-[ ] Variadic Functions
+[x] Functions
+[x] Multiple Return Values
+[x] Variadic Functions
 [ ] Closures
-[ ] Recursion
+[x] Recursion
 [ ] Pointers
 [ ] Structs
 [ ] Methods

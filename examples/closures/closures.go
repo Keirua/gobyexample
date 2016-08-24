@@ -1,16 +1,17 @@
-// Go supports [_anonymous functions_](http://en.wikipedia.org/wiki/Anonymous_function),
-// which can form <a href="http://en.wikipedia.org/wiki/Closure_(computer_science)"><em>closures</em></a>.
-// Anonymous functions are useful when you want to define
-// a function inline without having to name it.
+// Go support les [_fonctions anonymes_](https://fr.wikipedia.org/wiki/Fonction_anonyme),
+// qui peuvent former une [closure](https://fr.wikipedia.org/wiki/Fermeture_(informatique)) (fermeture ou clotûre en français.)
+// Les fonctions anonymes sont utiles lorsque l'on veut 
+// définir des fonctions à la volée, sans avoir à les
+//  nommer.
 
 package main
 
 import "fmt"
 
-// This function `intSeq` returns another function, which
-// we define anonymously in the body of `intSeq`. The
-// returned function _closes over_ the variable `i` to
-// form a closure.
+// Cette fonction `intSeq` renvoie une autre fonction, 
+// qui est définie anonymement dans le corps de `intSeq`.
+// La fonction retournée _embarque_ la variable `i` pour 
+// former une closure.
 func intSeq() func() int {
     i := 0
     return func() int {
@@ -21,20 +22,21 @@ func intSeq() func() int {
 
 func main() {
 
-    // We call `intSeq`, assigning the result (a function)
-    // to `nextInt`. This function value captures its
-    // own `i` value, which will be updated each time
-    // we call `nextInt`.
+    // On appelle `intSeq`, et assigne le résultat (une 
+    // function) à `nextInt`. Cette fonction capture sa
+    // propre valeur de `i`, qui sera mise à jour à 
+    // chaque fois que l'on appelle `nextInt`.
     nextInt := intSeq()
 
-    // See the effect of the closure by calling `nextInt`
-    // a few times.
+    // Voyez l'effet de la closure en appellant `nextInt`
+    // plusieurs fois.
     fmt.Println(nextInt())
     fmt.Println(nextInt())
     fmt.Println(nextInt())
 
-    // To confirm that the state is unique to that
-    // particular function, create and test a new one.
+    // Pour confirmer que l'état est unique à cette 
+    // fonction particulière, créez et testez en une
+    // nouvelle.
     newInts := intSeq()
     fmt.Println(newInts())
 }

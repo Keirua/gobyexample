@@ -1,32 +1,30 @@
-// _Functions_ are central in Go. We'll learn about
-// functions with a few different examples.
+// Les _fonctions_ sont centrales en Go. Nous allons les 
+// découvrir à travers quelques exemples différents.
 
 package main
 
 import "fmt"
 
-// Here's a function that takes two `int`s and returns
-// their sum as an `int`.
+// Voici une fonction qui prend deux `int` en paramètres,
+// et renvoie leur somme, un int.
 func plus(a int, b int) int {
 
-    // Go requires explicit returns, i.e. it won't
-    // automatically return the value of the last
+    // Go a besoin de retours explicites : il ne renverra
+    // pas automatiquement la valeur de la dernière
     // expression.
     return a + b
 }
 
-// When you have multiple consecutive parameters of
-// the same type, you may omit the type name for the
-// like-typed parameters up to the final parameter that
-// declares the type.
+// Quand vous avez plusieurs paramètres consécutifs du 
+// même type, vous pouvez vous passez des déclarations
+// de type jusqu'au dernier, qui le déclare.
 func plusPlus(a, b, c int) int {
     return a + b + c
 }
 
 func main() {
-
-    // Call a function just as you'd expect, with
-    // `name(args)`.
+    // On appelle une fonction comme on s'y attend, avec
+    // `nom(arguments)`
     res := plus(1, 2)
     fmt.Println("1+2 =", res)
 
