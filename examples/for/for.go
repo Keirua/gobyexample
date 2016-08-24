@@ -1,5 +1,5 @@
-// `for` is Go's only looping construct. Here are
-// three basic types of `for` loops.
+// `for` est la seule manière de faire une boucle en Go.
+// Voici trois types basiques de boucles `for`.
 
 package main
 
@@ -7,21 +7,23 @@ import "fmt"
 
 func main() {
 
-    // The most basic type, with a single condition.
+    // La plus simple, avec une unique condition.
     i := 1
     for i <= 3 {
         fmt.Println(i)
         i = i + 1
     }
 
-    // A classic initial/condition/after `for` loop.
+    // La boucle `for` classique, en 3 étapes :
+    // initialisation/condition/incrémentation.
     for j := 7; j <= 9; j++ {
         fmt.Println(j)
     }
 
-    // `for` without a condition will loop repeatedly
-    // until you `break` out of the loop or `return` from
-    // the enclosing function.
+    // `for` sans condition va boucler indéfiniment,
+    // jusqu'à ce qu'on `break` pour en sortir, ou
+    // qu'un `return` fasse sortir de la fonction
+    // correspondante.
     for {
         fmt.Println("loop")
         break

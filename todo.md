@@ -9,11 +9,11 @@ Translate readme.md into readme-fr.md
 
 [x] Hello World
 [x] Values
-[ ] Variables
-[ ] Constants
-[ ] For
-[ ] If/Else
-[ ] Switch
+[x] Variables
+[x] Constants
+[x] For
+[x] If/Else
+[x] Switch
 [ ] Arrays
 [ ] Slices
 [ ] Maps

@@ -1,5 +1,5 @@
-// _Switch statements_ express conditionals across many
-// branches.
+// Les expressions _Switch réalisent des conditions
+// à travers plusieurs branches
 
 package main
 
@@ -8,7 +8,7 @@ import "time"
 
 func main() {
 
-    // Here's a basic `switch`.
+    // Voici un `switch` basique.
     i := 2
     fmt.Print("write ", i, " as ")
     switch i {
@@ -20,9 +20,10 @@ func main() {
         fmt.Println("three")
     }
 
-    // You can use commas to separate multiple expressions
-    // in the same `case` statement. We use the optional
-    // `default` case in this example as well.
+    // On peut utiliser des virugules pour séparer
+    // plusieurs expressions dans un même `case`. Nous
+    // utilisons également le cas `default` optionnel
+    // dans cet exemple.
     switch time.Now().Weekday() {
     case time.Saturday, time.Sunday:
         fmt.Println("it's the weekend")
@@ -30,9 +31,10 @@ func main() {
         fmt.Println("it's a weekday")
     }
 
-    // `switch` without an expression is an alternate way
-    // to express if/else logic. Here we also show how the
-    // `case` expressions can be non-constants.
+    // `switch` sans expression est une autre manière de
+    // faire un if/else. Vous pouvez aussi voir que les
+    // expressions dans `case` peuvent être
+    // non-constantes.
     t := time.Now()
     switch {
     case t.Hour() < 12:
@@ -42,4 +44,4 @@ func main() {
     }
 }
 
-// todo: type switches
+// todo: switches avec des types
