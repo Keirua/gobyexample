@@ -7,6 +7,7 @@ $ go run for.go
 9
 loop
 
+
 # Nous verrons d'autres formes de boucles `for` plus tard
-# lors que nous verrons le mot clé `range`, les channels
+# lors que nous verrons le mot clé `range`, les channels
 # et d'autres structures de données.

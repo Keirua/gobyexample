@@ -1,5 +1,5 @@
-// _Maps_ are Go's built-in [associative data type](http://en.wikipedia.org/wiki/Associative_array)
-// (sometimes called _hashes_ or _dicts_ in other languages).
+// _Maps_ sont un type [type de donnée associatif](http://en.wikipedia.org/wiki/Associative_array)
+// (parfois appelé _hashes_ ou _dicts_ dans d'autres langages).
 
 package main
 
@@ -7,44 +7,45 @@ import "fmt"
 
 func main() {
 
-    // To create an empty map, use the builtin `make`:
-    // `make(map[key-type]val-type)`.
+    // Pour créer une map vide, on utilise la builtin
+    //  `make`: `make(map[key-type]val-type)`.
     m := make(map[string]int)
 
-    // Set key/value pairs using typical `name[key] = val`
-    // syntax.
+    // On affecte les paires clé/valeur avec la syntaxe
+    // `name[key] = val`
     m["k1"] = 7
     m["k2"] = 13
 
-    // Printing a map with e.g. `Println` will show all of
-    // its key/value pairs.
+    // Afficher une map via `Println` affichera toutes
+    // les paires clé/valeur
     fmt.Println("map:", m)
 
-    // Get a value for a key with `name[key]`.
+    // On récupère une valeur avec `name[key]`.
     v1 := m["k1"]
     fmt.Println("v1: ", v1)
 
-    // The builtin `len` returns the number of key/value
-    // pairs when called on a map.
+    // La builtin `len` renvoie le nombre de paires
+    // clé/valeur lorsqu'on l'appelle sur une map
     fmt.Println("len:", len(m))
 
-    // The builtin `delete` removes key/value pairs from
-    // a map.
+    // La builtin `delete` supprime d'une map
+    // une paire clé/valeur
     delete(m, "k2")
     fmt.Println("map:", m)
 
-    // The optional second return value when getting a
-    // value from a map indicates if the key was present
-    // in the map. This can be used to disambiguate
-    // between missing keys and keys with zero values
-    // like `0` or `""`. Here we didn't need the value
-    // itself, so we ignored it with the _blank identifier_
-    // `_`.
+    // La seconde valeur de retour optionnelle lorsque
+    // l'on récupère une valeur dans une map indique si
+    // la clé était présente. Cela peut être utilisé pour
+    // lever l'ambiguité entre des clés manquantes et des
+    // clés de valeur nulle, comme `0` ou `""`.
+    // Ici, nous n'avions pas besoin de la valeur en
+    // elle-même, donc nous l'avions ignorée avec
+    // l'_identifieur vide_ `_`.
     _, prs := m["k2"]
     fmt.Println("prs:", prs)
 
-    // You can also declare and initialize a new map in
-    // the same line with this syntax.
+    // On peut aussi déclarer et initialiser une nouvelle
+    // maps sur la même ligne avec cette syntaxe.
     n := map[string]int{"foo": 1, "bar": 2}
     fmt.Println("map:", n)
 }

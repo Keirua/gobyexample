@@ -231,14 +231,19 @@ func parseExamples() []*Example {
             example.Segs = make([][]*Seg, 0)
             sourcePaths := mustGlob("examples/" + exampleId + "/*")
             for _, sourcePath := range sourcePaths {
+                fmt.Println("sourcePath", sourcePath)
                 if strings.HasSuffix(sourcePath, ".hash") {
+                    fmt.Println("hash")
                     example.GoCodeHash, example.UrlHash = parseHashFile(sourcePath)
+                    fmt.Println("... OK")
                 } else {
+                    fmt.Println("seg", sourcePath)
                     sourceSegs, filecontents := parseAndRenderSegs(sourcePath)
                     if filecontents != "" {
                         example.GoCode = filecontents
                     }
                     example.Segs = append(example.Segs, sourceSegs)
+                    fmt.Println("... OK")
                 }
             }
             newCodeHash := sha1Sum(example.GoCode)
