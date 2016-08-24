@@ -1,4 +1,4 @@
-// _Maps_ sont un type [type de donnée associatif](http://en.wikipedia.org/wiki/Associative_array)
+// Les _maps_ sont un type [type de donnée associatif](http://en.wikipedia.org/wiki/Associative_array)
 // (parfois appelé _hashes_ ou _dicts_ dans d'autres langages).
 
 package main
