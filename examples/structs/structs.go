@@ -1,4 +1,4 @@
-// Les _structures_ en Go sont des collections de champs 
+// Les _structures_ en Go sont des collections de champs
 // typés.
 // Elles sont utiles pour regrouper ensemble les données.
 

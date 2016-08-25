@@ -1,6 +1,6 @@
 // Les [_fonctions variadiques_](https://fr.wikipedia.org/wiki/Fonction_variadique)
-// peuvent être appelées avec n'importe quel nombre 
-// d'arguments. Par exemple `fmt.Println` est une 
+// peuvent être appelées avec n'importe quel nombre
+// d'arguments. Par exemple `fmt.Println` est une
 // fonction variadique courante.
 
 package main
@@ -26,9 +26,9 @@ func main() {
     sum(1, 2)
     sum(1, 2, 3)
 
-    // Si vous avez déjà plusieurs arguments dans une 
-    // slice, vous pouvez les appliquer à la fonction 
-    // variadique en utilisant `func(slice...)` 
+    // Si vous avez déjà plusieurs arguments dans une
+    // slice, vous pouvez les appliquer à la fonction
+    // variadique en utilisant `func(slice...)`
     // comme ceci.
     nums := []int{1, 2, 3, 4}
     sum(nums...)

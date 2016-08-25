@@ -1,4 +1,4 @@
-// Les _interfaces_ sont des collections nommées de 
+// Les _interfaces_ sont des collections nommées de
 // signatures de méthodes.
 
 package main
@@ -21,7 +21,7 @@ type circle struct {
     radius float64
 }
 
-// Pour implémenter une interface en Go, il suffit 
+// Pour implémenter une interface en Go, il suffit
 // simplement d'en implémenter toutes les méthodes.
 // Ici, nous implémentons `geometry` chez `rect`s.
 func (r rect) area() float64 {
@@ -32,7 +32,7 @@ func (r rect) perim() float64 {
 }
 
 func (c circle) area() float64 {
-// Voici maintenant l'implémentation pour les `circle`.
+    // Voici maintenant l'implémentation pour les `circle`.
     return math.Pi * c.radius * c.radius
 }
 func (c circle) perim() float64 {
@@ -40,8 +40,8 @@ func (c circle) perim() float64 {
 }
 
 // Si une variable a une interface, alors on peut appeler
-// les méthodes de l'interface. Voici une fonction 
-// générique qui utilise ceci pour travailler avec 
+// les méthodes de l'interface. Voici une fonction
+// générique qui utilise ceci pour travailler avec
 // n'importe quelle `geometry`.
 func measure(g geometry) {
     fmt.Println(g)
@@ -53,7 +53,7 @@ func main() {
     r := rect{width: 3, height: 4}
     c := circle{radius: 5}
 
-    // Mes structures `circle` et `rect` implémentent 
+    // Mes structures `circle` et `rect` implémentent
     // tout deux les interfaces de `geometry`, on peut
     // donc utiliser des instances de ces structures en
     // argument de `measure`.

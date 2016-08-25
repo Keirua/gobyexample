@@ -1,4 +1,4 @@
-// Les _fonctions_ sont centrales en Go. Nous allons les 
+// Les _fonctions_ sont centrales en Go. Nous allons les
 // découvrir à travers quelques exemples différents.
 
 package main
@@ -15,7 +15,7 @@ func plus(a int, b int) int {
     return a + b
 }
 
-// Quand vous avez plusieurs paramètres consécutifs du 
+// Quand vous avez plusieurs paramètres consécutifs du
 // même type, vous pouvez vous passez des déclarations
 // de type jusqu'au dernier, qui le déclare.
 func plusPlus(a, b, c int) int {

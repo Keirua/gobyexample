@@ -1,4 +1,4 @@
-// Go supporte des _méthodes_ définies dans 
+// Go supporte des _méthodes_ définies dans
 // les structures.
 
 package main
@@ -14,7 +14,7 @@ func (r *rect) area() int {
     return r.width * r.height
 }
 
-// Les méthodes peuvent être définies soit pour un 
+// Les méthodes peuvent être définies soit pour un
 // pointeur, soit pour une valeur de type receveur. Voici
 // un exemple avec une valeur.
 func (r rect) perim() int {
@@ -29,9 +29,9 @@ func main() {
     fmt.Println("area: ", r.area())
     fmt.Println("perim:", r.perim())
 
-    // Go gère automatiquement la conversion entre 
+    // Go gère automatiquement la conversion entre
     // valeur et pointeur pour les appels de méthode. On
-    // peut vouloir utiliser un type receveur pointeur 
+    // peut vouloir utiliser un type receveur pointeur
     // pour éviter la copie lors des appels de méthode ou
     // pour modifier l'objet fourni.
     rp := &r

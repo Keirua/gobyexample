@@ -5,7 +5,7 @@ package main
 
 import "fmt"
 
-// Cette fonction `fact` s'appelle elle-même jusqu'à ce 
+// Cette fonction `fact` s'appelle elle-même jusqu'à ce
 // qu'elle atteigne le cas de base, `fact(0)`.
 func fact(n int) int {
     if n == 0 {

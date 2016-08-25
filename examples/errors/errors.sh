@@ -7,4 +7,5 @@ f2 failed: 42 - can't work with it
 can't work with it
 
 # Regardez ce [bon article](http://blog.golang.org/2011/07/error-handling-and-go.html)
-# sur le blog de Go pour plus d'informations sur la gestion d'erreurs.
+# sur le blog de Go pour plus d'informations 
+# sur la gestion d'erreurs.
