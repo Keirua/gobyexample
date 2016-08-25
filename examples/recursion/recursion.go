@@ -1,13 +1,12 @@
-// Go supports
-// <a href="http://en.wikipedia.org/wiki/Recursion_(computer_science)"><em>recursive functions</em></a>.
-// Here's a classic factorial example.
+// Go supporte la [récursivité](https://fr.wikipedia.org/wiki/R%C3%A9cursivit%C3%A9)
+// Voici l'exemple classique de la factorielle.
 
 package main
 
 import "fmt"
 
-// This `fact` function calls itself until it reaches the
-// base case of `fact(0)`.
+// Cette fonction `fact` s'appelle elle-même jusqu'à ce 
+// qu'elle atteigne le cas de base, `fact(0)`.
 func fact(n int) int {
     if n == 0 {
         return 1

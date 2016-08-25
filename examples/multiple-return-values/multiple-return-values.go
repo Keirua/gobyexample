@@ -1,30 +1,34 @@
-// Go has built-in support for _multiple return values_.
-// This feature is used often in idiomatic Go, for example
-// to return both result and error values from a function.
+// Go supporte de base les _valeurs de retour multiples_.
+// On s'en sert souvent en Go idiomatique, par exemple 
+// pour renvoyer le résultat et la valeur d'erreur d'une
+// fonction.
 
 package main
 
 import "fmt"
 
-// The `(int, int)` in this function signature shows that
-// the function returns 2 `int`s.
+
+// Le `(int, int)` dans cette signature de fonction 
+// montre que la fonction renvoie deux `int`s.
 func vals() (int, int) {
     return 3, 7
 }
 
 func main() {
 
-    // Here we use the 2 different return values from the
-    // call with _multiple assignment_.
+    // Ici nous utilisons les deux valeurs de retour
+    // différentes de l'appel avec un _assignement 
+    // multiple_.
     a, b := vals()
     fmt.Println(a)
     fmt.Println(b)
 
-    // If you only want a subset of the returned values,
-    // use the blank identifier `_`.
+    // Si vous voulez seulement un sous-ensemble des 
+    // valeurs de retour, vous pouvez utiliser 
+    // l'identifieur blanc `_`.
     _, c := vals()
     fmt.Println(c)
 }
 
-// todo: named return parameters
-// todo: naked returns
+// todo: paramètres de retour nommé
+// todo: retours nus
