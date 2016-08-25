@@ -1,26 +1,28 @@
-// Go supports <em><a href="http://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointers</a></em>,
-// allowing you to pass references to values and records
-// within your program.
+// Go supporte les [pointeurs](https://fr.wikipedia.org/wiki/Pointeur_(programmation)), 
+// ce qui permet de passer des références à des valeurs
+// dans les programmes
 
 package main
 
 import "fmt"
 
-// We'll show how pointers work in contrast to values with
-// 2 functions: `zeroval` and `zeroptr`. `zeroval` has an
-// `int` parameter, so arguments will be passed to it by
-// value. `zeroval` will get a copy of `ival` distinct
-// from the one in the calling function.
+// Nous allons voir comment fonctionnent les pointeurs,
+// par opposition aux valeurs, dans deux fonctions : 
+// `zeroval` et `zeroptr`.
+// `zeroval` a un paramètre, donc les arguments lui sont
+// passés par valeur. `zeroval` aura une copie de  `ival`
+// distincte de celle de la fonction appellante.
 func zeroval(ival int) {
     ival = 0
 }
 
-// `zeroptr` in contrast has an `*int` parameter, meaning
-// that it takes an `int` pointer. The `*iptr` code in the
-// function body then _dereferences_ the pointer from its
-// memory address to the current value at that address.
-// Assigning a value to a dereferenced pointer changes the
-// value at the referenced address.
+
+// `zeroptr` a cette fois-ci un paramètre `*int`, 
+// c'est-à-dire un pointeur sur un `int`. Le `*iptr` dans
+// le corps de la fonction permet de _deréférencer_ le 
+// pointeur de son adresse mémoire pour obtenir la valeur 
+// à cette adresse. Assigner une valeur à un pointeur 
+// déréférence change la valeur à l'adresse référencée.
 func zeroptr(iptr *int) {
     *iptr = 0
 }
@@ -32,11 +34,12 @@ func main() {
     zeroval(i)
     fmt.Println("zeroval:", i)
 
-    // The `&i` syntax gives the memory address of `i`,
-    // i.e. a pointer to `i`.
+    // La syntaxe `&i` donne l'adresse mémoire de  `i`,
+    // c'est à dire un pointeur vers `i`.
     zeroptr(&i)
     fmt.Println("zeroptr:", i)
 
+    // On peut afficher les pointeurs également.
     // Pointers can be printed too.
     fmt.Println("pointer:", &i)
 }

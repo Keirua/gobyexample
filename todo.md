@@ -23,7 +23,7 @@ Translate readme.md into readme-fr.md
 [x] Variadic Functions
 [x] Closures
 [x] Recursion
-[ ] Pointers
+[x] Pointers
 [ ] Structs
 [ ] Methods
 [ ] Interfaces
