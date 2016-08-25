@@ -29,7 +29,7 @@ Translate readme.md into readme-fr.md
 [x] Interfaces
 [ ] Errors
 [x] Goroutines
-[ ] Channels
+[x] Channels
 [ ] Channel Buffering
 [ ] Channel Synchronization
 [ ] Channel Directions
