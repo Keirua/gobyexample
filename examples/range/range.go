@@ -1,6 +1,7 @@
-// _range_ iterates over elements in a variety of data
-// structures. Let's see how to use `range` with some
-// of the data structures we've already learned.
+// _range_ itère sur les éléments de différents types de
+// structures de données. Voyons comment utiliser `range`
+// avec certaines des structures de données que nous 
+// avons déjà rencontré.
 
 package main
 
@@ -8,8 +9,9 @@ import "fmt"
 
 func main() {
 
-    // Here we use `range` to sum the numbers in a slice.
-    // Arrays work like this too.
+    // Ici on utilise `range` pour additionner les 
+    // nombres d'une slice.
+    // Cela fonctionne de la même manière avec un array.
     nums := []int{2, 3, 4}
     sum := 0
     for _, num := range nums {
@@ -17,26 +19,28 @@ func main() {
     }
     fmt.Println("sum:", sum)
 
-    // `range` on arrays and slices provides both the
-    // index and value for each entry. Above we didn't
-    // need the index, so we ignored it with the
-    // blank identifier `_`. Sometimes we actually want
-    // the indexes though.
+    // `range` sur les array et les slices fournit à la 
+    // fois la clé et la valeur pour chaque entrée.
+    // Au dessus, nous n'avons pas besoin de la clé, donc
+    // nous l'avions ignoré avec l'identifieur blanc `_`.
+    // On a cependant parfois besoin de le récupérer.
     for i, num := range nums {
         if num == 3 {
             fmt.Println("index:", i)
         }
     }
 
-    // `range` on map iterates over key/value pairs.
+    // `range` sur une map itère sur les paires 
+    /// clé/valeur.
     kvs := map[string]string{"a": "apple", "b": "banana"}
     for k, v := range kvs {
         fmt.Printf("%s -> %s\n", k, v)
     }
 
-    // `range` on strings iterates over Unicode code
-    // points. The first value is the starting byte index
-    // of the `rune` and the second the `rune` itself.
+    // `range` sur une chaine itère sur les points de 
+    // code [Unicode](https://fr.wikipedia.org/wiki/Unicode).
+    // La première valeur est l'index de l'octet de 
+    // départ de la `rune`, et le second la rune elle-même.
     for i, c := range "go" {
         fmt.Println(i, c)
     }

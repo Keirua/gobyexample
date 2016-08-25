@@ -16,8 +16,8 @@ Translate readme.md into readme-fr.md
 [x] Switch
 [x] Arrays
 [x] Slices
-[ ] Maps
-[ ] Range
+[x] Maps
+[x] Range
 [ ] Functions
 [ ] Multiple Return Values
 [ ] Variadic Functions
