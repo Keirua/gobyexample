@@ -24,9 +24,9 @@ Translate readme.md into readme-fr.md
 [x] Closures
 [x] Recursion
 [x] Pointers
-[ ] Structs
-[ ] Methods
-[ ] Interfaces
+[x] Structs
+[x] Methods
+[x] Interfaces
 [ ] Errors
 [ ] Goroutines
 [ ] Channels

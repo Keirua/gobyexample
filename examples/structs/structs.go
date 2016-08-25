@@ -1,12 +1,12 @@
-// Go's _structs_ are typed collections of fields.
-// They're useful for grouping data together to form
-// records.
+// Les _structures_ en Go sont des collections de champs 
+// typés.
+// Elles sont utiles pour regrouper ensemble les données.
 
 package main
 
 import "fmt"
 
-// This `person` struct type has `name` and `age` fields.
+// Cette structure `person` a des champs `name` et `age`.
 type person struct {
     name string
     age  int
@@ -14,28 +14,29 @@ type person struct {
 
 func main() {
 
-    // This syntax creates a new struct.
+    // Cette syntaxe crée une nouvelle structure.
     fmt.Println(person{"Bob", 20})
 
-    // You can name the fields when initializing a struct.
+    // On peut nommer les champs lorsqu'on initialise
+    //  une structure
     fmt.Println(person{name: "Alice", age: 30})
 
-    // Omitted fields will be zero-valued.
+    // Les champs non spécifiés seront de valeur nulle.
     fmt.Println(person{name: "Fred"})
 
-    // An `&` prefix yields a pointer to the struct.
+    // Un préfixe `&` fournit un pointeur sur la structure.
     fmt.Println(&person{name: "Ann", age: 40})
 
-    // Access struct fields with a dot.
+    // On accède aux champs de la structure avec un point
     s := person{name: "Sean", age: 50}
     fmt.Println(s.name)
 
-    // You can also use dots with struct pointers - the
-    // pointers are automatically dereferenced.
+    // On peut aussi utiliser le point avec des pointeurs
+    // de structure : les pointeurs sont automatiquement déréférencés.
     sp := &s
     fmt.Println(sp.age)
 
-    // Structs are mutable.
+    // Les structures sont mutables.
     sp.age = 51
     fmt.Println(sp.age)
 }
