@@ -1,4 +1,4 @@
-// On peut utiliser les canaux pour synchronier 
+// On peut utiliser les canaux pour synchronier
 // l'exécution à travers des goroutines. Voici un exemple
 // qui utilise une réception bloquante pour attendre
 // qu'une goroutine se termine.
@@ -21,7 +21,7 @@ func worker(done chan bool) {
 }
 
 func main() {
-    // On démarre la goroutine, en lui fournissant 
+    // On démarre la goroutine, en lui fournissant
     // le canal à notifier.
     done := make(chan bool, 1)
     go worker(done)

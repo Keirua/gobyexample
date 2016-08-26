@@ -22,7 +22,7 @@ func main() {
     // valeurs, la valeur de `more` sera `false`
     // si `jobs` a été fermée et que toutes les valeurs
     // ont déjà été reçues.
-    // Nous utilisons cela pour notifier le canal `done` 
+    // Nous utilisons cela pour notifier le canal `done`
     // lorsque nous avons traité tous les jobs.
     go func() {
         for {
@@ -46,7 +46,7 @@ func main() {
     close(jobs)
     fmt.Println("sent all jobs")
 
-    // On attend le worker en utilisation l'approche de 
+    // On attend le worker en utilisation l'approche de
     // [synchronisation](channel-synchronization) vue plus tôt.
     <-done
 }

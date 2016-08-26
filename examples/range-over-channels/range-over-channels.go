@@ -16,11 +16,11 @@ func main() {
     queue <- "two"
     close(queue)
 
-    // Ce `range` itère sur chaque élément à mesure 
+    // Ce `range` itère sur chaque élément à mesure
     // qu'il est reçu dans `queue`.
-    // Comme nous avons fermé le canal plus haut, 
+    // Comme nous avons fermé le canal plus haut,
     // l'itération se termine après réception des deux
-    // éléments. Si nous ne l'avions pas fermé, nous 
+    // éléments. Si nous ne l'avions pas fermé, nous
     // bloquerions sur la réception d'une troisième
     // valeur dans la boucle.
     for elem := range queue {

@@ -13,12 +13,12 @@ func f(from string) {
 func main() {
 
     // Suppons que l'on ait un appel de fonction `f(s)`.
-    // Normalement, on l'appellerait comme ceci, et son 
+    // Normalement, on l'appellerait comme ceci, et son
     // execution serait synchrone.
     f("direct")
 
-    // Pour appeler la fonction dans une goroutine, on 
-    // utilise `go f(s)`. Cette nouvelle goroutine va 
+    // Pour appeler la fonction dans une goroutine, on
+    // utilise `go f(s)`. Cette nouvelle goroutine va
     // s'exécuter de manière concurrent avec l'appellée.
     go f("goroutine")
 
@@ -29,8 +29,8 @@ func main() {
     }("going")
 
     // Nous deux appels de fonction s'éxécutent de manière
-    // asynchrone dans des goroutines séparées, donc 
-    // l'exécution tombe ici. Ce `Scanln` demande que 
+    // asynchrone dans des goroutines séparées, donc
+    // l'exécution tombe ici. Ce `Scanln` demande que
     // l'on presse une touche pour sortir du programme.
     var input string
     fmt.Scanln(&input)

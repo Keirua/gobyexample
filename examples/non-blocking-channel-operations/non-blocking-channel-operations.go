@@ -1,7 +1,7 @@
 // Les envois et receptions basiques sur les canaux
 // sont bloquants.
 // Cependant, on peut utilise `select` avec une clause
-// `default` pour implémenter des envois et réceptions 
+// `default` pour implémenter des envois et réceptions
 // _non bloquants_, et même des `select` non bloquants
 // sur plusieurs canaux.
 
@@ -13,7 +13,7 @@ func main() {
     messages := make(chan string)
     signals := make(chan bool)
 
-    // Voici une réception non bloquante. Si une valeur 
+    // Voici une réception non bloquante. Si une valeur
     // est disponible sur `messages`, alors `select` va
     // prendre le cas `<-messages` avec cette valeur.
     // Si non, il prendra immédiatement le cas `default`.
@@ -33,10 +33,10 @@ func main() {
         fmt.Println("no message sent")
     }
 
-    // On peut utiliser plusieurs `case` au dessus de 
+    // On peut utiliser plusieurs `case` au dessus de
     // la clause `default` pour implémenter un select non
     // bloquant multiple. Ici, on essaye de recevoir des
-    // messages de manière non bloquante sur les canaux 
+    // messages de manière non bloquante sur les canaux
     // `messages` et `signals` simultanément.
     select {
     case msg := <-messages:

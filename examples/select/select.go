@@ -1,4 +1,4 @@
-// Le _select_ de go permet d'attendre plusieurs 
+// Le _select_ de go permet d'attendre plusieurs
 // opérations sur les canaux. Combiner les goroutines et
 // les canaux est une fonctionnalité puissante de Go.
 
@@ -8,14 +8,14 @@ import "time"
 import "fmt"
 
 func main() {
-    // Pour notre exemple, nous ferons des select à 
+    // Pour notre exemple, nous ferons des select à
     // travers deux canaux.
     c1 := make(chan string)
     c2 := make(chan string)
 
     // Chaque canal va recevoir une valeur après un
-    // certain temps, pour simuler une opération 
-    // bloquante (par ex. un appel RPC) qui s'exécute 
+    // certain temps, pour simuler une opération
+    // bloquante (par ex. un appel RPC) qui s'exécute
     // dans une goroutine concurrente.
     go func() {
         time.Sleep(time.Second * 1)

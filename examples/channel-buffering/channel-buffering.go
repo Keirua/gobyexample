@@ -1,9 +1,11 @@
-// By default channels are _unbuffered_, meaning that they
-// will only accept sends (`chan <-`) if there is a
-// corresponding receive (`<- chan`) ready to receive the
-// sent value. _Buffered channels_ accept a limited
-// number of  values without a corresponding receiver for
-// those values.
+// Par défaut les canaux n'ont pas de buffer, ce qui
+// signifie qu'ils acceptent uniquement les envois
+// (`chan <-`) s'il y a un receveur
+// correspondant (`<- chan`) prêt à recevoir la valeur
+// envoyée.
+// Les _canaux avec buffer_ acceptent un nombre limité
+// de valeurs sans receveur correspondant
+// pour ces valeurs.
 
 package main
 

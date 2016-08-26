@@ -1,7 +1,7 @@
-// Lorsqu'on utilise des canaux comme paramètres de 
-// fonctions, on peut spécifier si un canal est censé 
-// uniquement envoyer ou recevoir des valeurs. Cette 
-// spécificité augmente la sécurité du typage du 
+// Lorsqu'on utilise des canaux comme paramètres de
+// fonctions, on peut spécifier si un canal est censé
+// uniquement envoyer ou recevoir des valeurs. Cette
+// spécificité augmente la sécurité du typage du
 // programme.
 
 package main
@@ -9,8 +9,8 @@ package main
 import "fmt"
 
 // Cette fonction `ping` accepte seulement un canal qui
-// envoie des valeurs. On aurait une erreur de 
-// compilation si on lui essayait de recevoir sur ce 
+// envoie des valeurs. On aurait une erreur de
+// compilation si on lui essayait de recevoir sur ce
 // canal.
 func ping(pings chan<- string, msg string) {
     pings <- msg
