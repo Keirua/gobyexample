@@ -38,8 +38,8 @@ Translate readme.md into readme-fr.md
 [x] Non-Blocking Channel Operations
 [x] Closing Channels
 [x] Range over Channels
-[ ] Timers
-[ ] Tickers
+[x] Timers
+[x] Tickers
 [ ] Worker Pools
 [ ] Rate Limiting
 [ ] Atomic Counters

@@ -1,6 +1,8 @@
-// [Timers](timers) are for when you want to do
-// something once in the future - _tickers_ are for when
-// you want to do something repeatedly at regular
+// Les [timers](timers) servent quand on veut faire
+// quelquechose dans le futur. Les _tickers_ servent à
+// faire quelquechose de manière répétée à intervalles
+// réguliers. Voici un exemple d'un ticker qui se répète
+// jusqu'à ce qu'on l'arrête.
 // intervals. Here's an example of a ticker that ticks
 // periodically until we stop it.
 
@@ -11,10 +13,11 @@ import "fmt"
 
 func main() {
 
-    // Tickers use a similar mechanism to timers: a
-    // channel that is sent values. Here we'll use the
-    // `range` builtin on the channel to iterate over
-    // the values as they arrive every 500ms.
+    // Les tickers utilisent un mécanisme similaire à
+    // celui des timers : un canal pour envoyer des
+    // valeurs. Ici, nous utilisons la builtin `range`
+    // sur le canal pour itérer sur les valeurs
+    // lorsqu'elles arrivent, toutes les 500ms.
     ticker := time.NewTicker(time.Millisecond * 500)
     go func() {
         for t := range ticker.C {
@@ -22,9 +25,10 @@ func main() {
         }
     }()
 
-    // Tickers can be stopped like timers. Once a ticker
-    // is stopped it won't receive any more values on its
-    // channel. We'll stop ours after 1600ms.
+    // Les tickers peuvent être arrêtés comme les timers.
+    // Lorsqu'un ticker est arrêté, il ne recevra plus de
+    // valeurs sur son canal. Nous arrêterons le notre
+    // après 1600ms.
     time.Sleep(time.Millisecond * 1600)
     ticker.Stop()
     fmt.Println("Ticker stopped")
