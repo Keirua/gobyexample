@@ -47,8 +47,8 @@ Translate readme.md into readme-fr.md
 [ ] Stateful Goroutines
 [x] Sorting
 [x] Sorting by Functions
-[ ] Panic
-[ ] Defer
+[x] Panic
+[x] Defer
 [ ] Collection Functions
 [ ] String Functions
 [ ] String Formatting
@@ -65,12 +65,12 @@ Translate readme.md into readme-fr.md
 [ ] Reading Files
 [ ] Writing Files
 [ ] Line Filters
-[ ] Command-Line Arguments
+[x] Command-Line Arguments
 [ ] Command-Line Flags
 [ ] Environment Variables
 [ ] Spawning Processes
 [ ] Exec'ing Processes
 [ ] Signals
-[ ] Exit
+[x] Exit
 
 
