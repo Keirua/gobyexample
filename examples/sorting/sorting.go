@@ -1,6 +1,6 @@
-// Go's `sort` package implements sorting for builtins
-// and user-defined types. We'll look at sorting for
-// builtins first.
+// Le package `sort` implémente le tri pour les type de
+// base et ceux définis par l'utilisateur. Regardons
+// d'abord le tri pour les types du langage.
 
 package main
 
@@ -9,21 +9,22 @@ import "sort"
 
 func main() {
 
-    // Sort methods are specific to the builtin type;
-    // here's an example for strings. Note that sorting is
-    // in-place, so it changes the given slice and doesn't
-    // return a new one.
+    // Les méthodes de tri sont spécifiques à un type ;
+    // voici un exemple pour les chaines de caractères. A
+    // noter que le tri se fait sur place, donc la slice
+    // fournie est modifiée et la fonction n'en renvoit 
+    // pas une nouvelle.
     strs := []string{"c", "a", "b"}
     sort.Strings(strs)
     fmt.Println("Strings:", strs)
 
-    // An example of sorting `int`s.
+    // Un exemple de tri sur les `int`.
     ints := []int{7, 2, 4}
     sort.Ints(ints)
     fmt.Println("Ints:   ", ints)
 
-    // We can also use `sort` to check if a slice is
-    // already in sorted order.
+    // On peut également utiliser sort pour tester si 
+    // une slice est déjà triée.
     s := sort.IntsAreSorted(ints)
     fmt.Println("Sorted: ", s)
 }

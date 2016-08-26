@@ -45,8 +45,8 @@ Translate readme.md into readme-fr.md
 [ ] Atomic Counters
 [ ] Mutexes
 [ ] Stateful Goroutines
-[ ] Sorting
-[ ] Sorting by Functions
+[x] Sorting
+[x] Sorting by Functions
 [ ] Panic
 [ ] Defer
 [ ] Collection Functions
