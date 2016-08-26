@@ -31,13 +31,13 @@ Translate readme.md into readme-fr.md
 [x] Goroutines
 [x] Channels
 [ ] Channel Buffering
-[ ] Channel Synchronization
-[ ] Channel Directions
-[ ] Select
-[ ] Timeouts
-[ ] Non-Blocking Channel Operations
-[ ] Closing Channels
-[ ] Range over Channels
+[x] Channel Synchronization
+[x] Channel Directions
+[x] Select
+[x] Timeouts
+[x] Non-Blocking Channel Operations
+[x] Closing Channels
+[x] Range over Channels
 [ ] Timers
 [ ] Tickers
 [ ] Worker Pools

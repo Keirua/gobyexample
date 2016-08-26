@@ -8,5 +8,5 @@ received job 3
 sent all jobs
 received all jobs
 
-# The idea of closed channels leads naturally to our next
-# example: `range` over channels.
+# L'idée des canaux fermés amène naturllement à notre
+# exemple suivant : utiliser `range` sur des canaux.

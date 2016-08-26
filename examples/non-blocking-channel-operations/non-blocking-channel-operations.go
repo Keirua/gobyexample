@@ -1,7 +1,9 @@
-// Basic sends and receives on channels are blocking.
-// However, we can use `select` with a `default` clause to
-// implement _non-blocking_ sends, receives, and even
-// non-blocking multi-way `select`s.
+// Les envois et receptions basiques sur les canaux
+// sont bloquants.
+// Cependant, on peut utilise `select` avec une clause
+// `default` pour implémenter des envois et réceptions 
+// _non bloquants_, et même des `select` non bloquants
+// sur plusieurs canaux.
 
 package main
 
@@ -11,10 +13,10 @@ func main() {
     messages := make(chan string)
     signals := make(chan bool)
 
-    // Here's a non-blocking receive. If a value is
-    // available on `messages` then `select` will take
-    // the `<-messages` `case` with that value. If not
-    // it will immediately take the `default` case.
+    // Voici une réception non bloquante. Si une valeur 
+    // est disponible sur `messages`, alors `select` va
+    // prendre le cas `<-messages` avec cette valeur.
+    // Si non, il prendra immédiatement le cas `default`.
     select {
     case msg := <-messages:
         fmt.Println("received message", msg)
@@ -22,7 +24,7 @@ func main() {
         fmt.Println("no message received")
     }
 
-    // A non-blocking send works similarly.
+    // Un envoi non bloquand marche de manière similaire.
     msg := "hi"
     select {
     case messages <- msg:
@@ -31,10 +33,11 @@ func main() {
         fmt.Println("no message sent")
     }
 
-    // We can use multiple `case`s above the `default`
-    // clause to implement a multi-way non-blocking
-    // select. Here we attempt non-blocking receives
-    // on both `messages` and `signals`.
+    // On peut utiliser plusieurs `case` au dessus de 
+    // la clause `default` pour implémenter un select non
+    // bloquant multiple. Ici, on essaye de recevoir des
+    // messages de manière non bloquante sur les canaux 
+    // `messages` et `signals` simultanément.
     select {
     case msg := <-messages:
         fmt.Println("received message", msg)
