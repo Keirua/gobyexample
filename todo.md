@@ -49,9 +49,9 @@ Translate readme.md into readme-fr.md
 [x] Sorting by Functions
 [x] Panic
 [x] Defer
-[ ] Collection Functions
-[ ] String Functions
-[ ] String Formatting
+[x] Collection Functions
+[x] String Functions
+[x] String Formatting
 [ ] Regular Expressions
 [ ] JSON
 [ ] Time
@@ -62,8 +62,8 @@ Translate readme.md into readme-fr.md
 [ ] URL Parsing
 [ ] SHA1 Hashes
 [ ] Base64 Encoding
-[ ] Reading Files
-[ ] Writing Files
+[x] Reading Files
+[x] Writing Files
 [ ] Line Filters
 [x] Command-Line Arguments
 [ ] Command-Line Flags

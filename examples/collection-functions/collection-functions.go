@@ -1,28 +1,16 @@
-// We often need our programs to perform operations on
-// collections of data, like selecting all items that
-// satisfy a given predicate or mapping all items to a new
-// collection with a custom function.
+// On a souvent besoin que les programmes réalisent des opérations sur des collections de données, comme sélectionner tous les éléments qui correspondent à un prédicat, ou associer les éléments à une autre collection selon une fonction donnée.
 
-// In some languages it's idiomatic to use [generic](http://en.wikipedia.org/wiki/Generic_programming)
-// data structures and algorithms. Go does not support
-// generics; in Go it's common to provide collection
-// functions if and when they are specifically needed for
-// your program and data types.
+// Dans certains langages il est idiomatiques d'utilise des structures de données et des algorithmes [génériques](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9ricit%C3%A9). Go ne supporte pas les types génériques; en Go, il est courant de fournir des fonctions sur les collections spécialement pour un type donné, si et lorsque c'est spécifiquement nécessaire pour le programme.
 
-// Here are some example collection functions for slices
-// of `strings`. You can use these examples to build your
-// own functions. Note that in some cases it may be
-// clearest to just inline the collection-manipulating
-// code directly, instead of creating and calling a
-// helper function.
+// Voici quelques exemples de fonctions sur les collections pour des slices de `strings`. Vous pouvez utiliser ces exemples pour concevoir vos propres fonctions. A noter que dans certains cas, il peut être plus clair d'utiliser le code de manipulation de collections inline, plutôt que créer et appeler des fonctions auxilliaires.
 
 package main
 
 import "strings"
 import "fmt"
 
-// Returns the first index of the target string `t`, or
-// -1 if no match is found.
+// Renvoie le premier index où se trouve la chaîne cible `t`, ou
+// -1 si aucune correspondance n'est trouvée.
 func Index(vs []string, t string) int {
     for i, v := range vs {
         if v == t {
@@ -32,14 +20,12 @@ func Index(vs []string, t string) int {
     return -1
 }
 
-// Returns `true` if the target string t is in the
-// slice.
+// Revnoie `true` si la chaîne cible t est dans la slice
 func Include(vs []string, t string) bool {
     return Index(vs, t) >= 0
 }
 
-// Returns `true` if one of the strings in the slice
-// satisfies the predicate `f`.
+// Renvoie `true` si une des chaines de la slice satisfait le prédicat `f`.
 func Any(vs []string, f func(string) bool) bool {
     for _, v := range vs {
         if f(v) {
@@ -49,8 +35,7 @@ func Any(vs []string, f func(string) bool) bool {
     return false
 }
 
-// Returns `true` if all of the strings in the slice
-// satisfy the predicate `f`.
+// Renvoie `true` si toutes les chaines de la slice satisfassent le prédicat `f`.
 func All(vs []string, f func(string) bool) bool {
     for _, v := range vs {
         if !f(v) {
@@ -60,8 +45,7 @@ func All(vs []string, f func(string) bool) bool {
     return true
 }
 
-// Returns a new slice containing all strings in the
-// slice that satisfy the predicate `f`.
+// Renvoie une nouvelle slice contenant toutes les chaines de la slice qui satisfasse le prédicat `f`.
 func Filter(vs []string, f func(string) bool) []string {
     vsf := make([]string, 0)
     for _, v := range vs {
@@ -72,8 +56,7 @@ func Filter(vs []string, f func(string) bool) []string {
     return vsf
 }
 
-// Returns a new slice containing the results of applying
-// the function `f` to each string in the original slice.
+// Renvoie une nouvelle slice contenant le résultat de l'application de la fonction `f` à chacune des chaines de la slice de départ.
 func Map(vs []string, f func(string) string) []string {
     vsm := make([]string, len(vs))
     for i, v := range vs {
@@ -84,7 +67,7 @@ func Map(vs []string, f func(string) string) []string {
 
 func main() {
 
-    // Here we try out our various collection functions.
+    // Maintenant, on essaye nos différentes fonctions sur les collections.
     var strs = []string{"peach", "apple", "pear", "plum"}
 
     fmt.Println(Index(strs, "pear"))
@@ -103,9 +86,7 @@ func main() {
         return strings.Contains(v, "e")
     }))
 
-    // The above examples all used anonymous functions,
-    // but you can also use named functions of the correct
-    // type.
+    // Les exemples ci-dessus ont tous utilisé des fonctions anonymes, mais vous pouvez également utiliser des fonctions nommées (à condition qu'elles soient du bon type).
     fmt.Println(Map(strs, strings.ToUpper))
 
 }

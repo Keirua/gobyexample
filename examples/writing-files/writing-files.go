@@ -1,5 +1,4 @@
-// Writing files in Go follows similar patterns to the
-// ones we saw earlier for reading.
+// Ecrire dans des fichiers en Go se fait de manière similaire à ce que nous avons vu pour l'écriture.
 
 package main
 
@@ -18,41 +17,37 @@ func check(e error) {
 
 func main() {
 
-    // To start, here's how to dump a string (or just
-    // bytes) into a file.
+    // Pour commencer, voici comment balancer une chaîne (ou simplement des octets) dans un fichier.
     d1 := []byte("hello\ngo\n")
     err := ioutil.WriteFile("/tmp/dat1", d1, 0644)
     check(err)
 
-    // For more granular writes, open a file for writing.
+    // Pour des écritures plus granulaires, on ouvre un fichier pour y écrire.
     f, err := os.Create("/tmp/dat2")
     check(err)
 
-    // It's idiomatic to defer a `Close` immediately
-    // after opening a file.
+    // Il est idiomatique de reporter la fermeture avec `Close` immédiatement après l'ouverture avec `defer`.
     defer f.Close()
 
-    // You can `Write` byte slices as you'd expect.
+    // On peut écrite des slices d'octets comme on s'y attend avec `Write`.
     d2 := []byte{115, 111, 109, 101, 10}
     n2, err := f.Write(d2)
     check(err)
     fmt.Printf("wrote %d bytes\n", n2)
 
-    // A `WriteString` is also available.
+    // `WriteString` est également disponible.
     n3, err := f.WriteString("writes\n")
     fmt.Printf("wrote %d bytes\n", n3)
 
-    // Issue a `Sync` to flush writes to stable storage.
+    // Appelez `Sync` pour vider les écriture
     f.Sync()
 
-    // `bufio` provides buffered writers in addition
-    // to the buffered readers we saw earlier.
+    // `bufio` fournit des writers avec buffer en complémenter des readers que nous avons vu plus tôt.
     w := bufio.NewWriter(f)
     n4, err := w.WriteString("buffered\n")
     fmt.Printf("wrote %d bytes\n", n4)
 
-    // Use `Flush` to ensure all buffered operations have
-    // been applied to the underlying writer.
+    // Utilisez `Flush` pour vous assurer que toutes les opéraitions avec buffer ont été appliquées au writer sous-jacent.
     w.Flush()
 
 }

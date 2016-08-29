@@ -1,23 +1,18 @@
-// The standard library's `strings` package provides many
-// useful string-related functions. Here are some examples
-// to give you a sense of the package.
+// Le package `strings` de la librairie standard fournit de nombreuses fonctions utiles pour la manipulations des chaînes de caractères. En voici un aperçu.
 
 package main
 
 import s "strings"
 import "fmt"
 
-// We alias `fmt.Println` to a shorter name as we'll use
-// it a lot below.
+// On crée un alias sur `fmt.Println` vers un nom plus court car on va beaucoup s'en service ensuite.
 var p = fmt.Println
 
 func main() {
 
-    // Here's a sample of the functions available in
-    // `strings`. Note that these are all functions from
-    // package, not methods on the string object itself.
-    // This means that we need pass the string in question
-    // as the first argument to the function.
+    // Voici un exemple des fonctions disponibles dans
+    // `strings`. Notez que ce sont toutes des fonctions du package, pas des méthodes sur l'objet string lui-même.
+    // Cela signifne que vous devez passer la chaîne en question commen premier argument des fonctions.
     p("Contains:  ", s.Contains("test", "es"))
     p("Count:     ", s.Count("test", "t"))
     p("HasPrefix: ", s.HasPrefix("test", "te"))
@@ -32,12 +27,9 @@ func main() {
     p("ToUpper:   ", s.ToUpper("test"))
     p()
 
-    // You can find more functions in the [`strings`](http://golang.org/pkg/strings/)
-    // package docs.
+    // Vous pourrez trouver plus de fonctions dans la documentation du package [`strings`](http://golang.org/pkg/strings/)
 
-    // Not part of `strings` but worth mentioning here are
-    // the mechanisms for getting the length of a string
-    // and getting a character by index.
+    // Cela ne fait pas partie de `strings`, mais il est utile de mentionner qu'on peut obtenir la longueur d'une chaîne avec `len` et qu'on peut accéder à un caractère en particulier via son index.
     p("Len: ", len("hello"))
     p("Char:", "hello"[1])
 }
