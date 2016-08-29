@@ -1,37 +1,41 @@
-// In Go it's idiomatic to communicate errors via an
-// explicit, separate return value. This contrasts with
-// the exceptions used in languages like Java and Ruby and
-// the overloaded single result / error value sometimes
-// used in C. Go's approach makes it easy to see which
-// functions return errors and to handle them using the
-// same language constructs employed for any other,
-// non-error tasks.
+// En Go, il est idiomatique de communiquer les erreurs
+// via une valeur de retour explicite et séparrée. Cela
+// contraste avec les exceptions utilisées dans des
+// languages comme Java ou Ruby, et ce qu'on retrouve
+// en C, où l'on renvoit parfait une valeur, et parfois
+// un code d'erreur. L'approche en Go fait qu'il est
+// facile de voir quelles fonctions renvoient un code
+// d'erreur et de les gérer en utilisant les mêmes
+// constructions du langage utilisées pour n'importe
+// quelle autre tâche sans erreur.
 
 package main
 
 import "errors"
 import "fmt"
 
-// By convention, errors are the last return value and
-// have type `error`, a built-in interface.
+// Par convention, les erreurs sont la dernière valeur de
+// retour et ont pour type `error`, une interface du
+// langage.
 func f1(arg int) (int, error) {
     if arg == 42 {
 
-        // `errors.New` constructs a basic `error` value
-        // with the given error message.
+        // `errors.New` construit une valeur d'erreur
+        // basique avec le message d'erreur donné.
         return -1, errors.New("can't work with 42")
 
     }
 
-    // A nil value in the error position indicates that
-    // there was no error.
+    // La valeur nil pour l'erreur indique qu'il n'y a
+    // pas eu d'erreurs.
     return arg + 3, nil
 }
 
-// It's possible to use custom types as `error`s by
-// implementing the `Error()` method on them. Here's a
-// variant on the example above that uses a custom type
-// to explicitly represent an argument error.
+// Il est possible d'utiliser des types d'erreurs sur
+// mesure en implémentant la méthode  `Error()` sur ces
+// types. Voici une variante de l'exemple ci dessus qui
+// utilise un type sur mesure pour représenter
+// explicitement une erreur d'argument.
 type argError struct {
     arg  int
     prob string
@@ -43,21 +47,20 @@ func (e *argError) Error() string {
 
 func f2(arg int) (int, error) {
     if arg == 42 {
-
-        // In this case we use `&argError` syntax to build
-        // a new struct, supplying values for the two
-        // fields `arg` and `prob`.
+        // Dans ce cas, nous utilisons la syntaxe
+        // `&argError` pour construire l'object et
+        // fournir les valeurs des deux champs `arg`
+        // et `prob`.
         return -1, &argError{arg, "can't work with it"}
     }
     return arg + 3, nil
 }
 
 func main() {
-
-    // The two loops below test out each of our
-    // error-returning functions. Note that the use of an
-    // inline error check on the `if` line is a common
-    // idiom in Go code.
+    // Les deux boucles ci-dessous testent chacunes de
+    // nos fonctions qui renvoient des erreurs. Notez que
+    // l'utilisation d'un test d'erreur inline dans le
+    // `if` est idiomatique en code Go.
     for _, i := range []int{7, 42} {
         if r, e := f1(i); e != nil {
             fmt.Println("f1 failed:", e)
@@ -73,10 +76,10 @@ func main() {
         }
     }
 
-    // If you want to programmatically use the data in
-    // a custom error, you'll need to get the error  as an
-    // instance of the custom error type via type
-    // assertion.
+    // Si vous voulez utilisez les données d'une erreur
+    // custom, vous devrez récupérer l'erreur comme une
+    // instance du type d'erreur sur mesure en
+    // explicitant le type à utiliser.
     _, e := f2(42)
     if ae, ok := e.(*argError); ok {
         fmt.Println(ae.arg)

@@ -12,18 +12,18 @@ package main
 import "fmt"
 
 func main() {
-
-    // Here we `make` a channel of strings buffering up to
-    // 2 values.
+    // Ici on crée avec `make` un canal avec buffer, qui
+    // accumule jusqu'à 2 string.
     messages := make(chan string, 2)
 
-    // Because this channel is buffered, we can send these
-    // values into the channel without a corresponding
-    // concurrent receive.
+    // Comme ce canal a un buffer, nous pouvons envoyer
+    // ces deux valeurs dans le canal sans une réception
+    // concurrente correspondante.
     messages <- "buffered"
     messages <- "channel"
 
-    // Later we can receive these two values as usual.
+    // Ensuite, on peut recevoir ces deux valeurs comme
+    // d'habitude.
     fmt.Println(<-messages)
     fmt.Println(<-messages)
 }
