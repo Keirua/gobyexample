@@ -52,7 +52,7 @@ Translate readme.md into readme-fr.md
 [x] Collection Functions
 [x] String Functions
 [x] String Formatting
-[ ] Regular Expressions
+[x] Regular Expressions
 [ ] JSON
 [x] Time
 [x] Epoch

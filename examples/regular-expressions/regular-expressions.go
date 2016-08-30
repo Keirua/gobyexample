@@ -1,6 +1,5 @@
-// Go offers built-in support for [regular expressions](http://en.wikipedia.org/wiki/Regular_expression).
-// Here are some examples of  common regexp-related tasks
-// in Go.
+// Go offre de base un support des [expressions régulières](https://fr.wikipedia.org/wiki/Expression_rationnelle) (ou regex, pour regular expression).
+// Voici quelques exemples de tâches courantes sur les `regex` en Go.
 
 package main
 
@@ -10,71 +9,51 @@ import "regexp"
 
 func main() {
 
-    // This tests whether a pattern matches a string.
+    // Ceci teste si un motif ("p([a-z]+)ch") correspond à une chaîne.
     match, _ := regexp.MatchString("p([a-z]+)ch", "peach")
     fmt.Println(match)
 
-    // Above we used a string pattern directly, but for
-    // other regexp tasks you'll need to `Compile` an
-    // optimized `Regexp` struct.
+    // Au dessus nous avec utiliser un motif directement, mais pour d'autres tâches il faut la compile en une structure `Regexp` optimisée.
     r, _ := regexp.Compile("p([a-z]+)ch")
 
-    // Many methods are available on these structs. Here's
-    // a match test like we saw earlier.
+    // Plusieurs méthodes sont disponibles. Voici le même test que celui vu plus tôt.
     fmt.Println(r.MatchString("peach"))
 
-    // This finds the match for the regexp.
+    // Ceci trouve l'association pour la regex.
     fmt.Println(r.FindString("peach punch"))
 
-    // This also finds the first match but returns the
-    // start and end indexes for the match instead of the
-    // matching text.
+    // Ceci trouve également la première correspondance mais renvoie l'indice de début et fin de la correspondance, au lieu de renvoyer le text correspondant.
     fmt.Println(r.FindStringIndex("peach punch"))
 
-    // The `Submatch` variants include information about
-    // both the whole-pattern matches and the submatches
-    // within those matches. For example this will return
-    // information for both `p([a-z]+)ch` and `([a-z]+)`.
+    // La variante `Submatch` inclue des informations sur les associations au niveau du pattern entier, ainsi que les sous-correspondances à l'intérieur du motif.
+    // Par exemple ici, cela renverra des informations à la fois sur `p([a-z]+)ch` et `([a-z]+)`.
     fmt.Println(r.FindStringSubmatch("peach punch"))
 
-    // Similarly this will return information about the
-    // indexes of matches and submatches.
+    // De la même manière, cela donne des inforamtions sur les indices de correspondances globales et les sous-correspondances.
     fmt.Println(r.FindStringSubmatchIndex("peach punch"))
 
-    // The `All` variants of these functions apply to all
-    // matches in the input, not just the first. For
-    // example to find all matches for a regexp.
+    // Les variantes  `All` de ces fonctions s'appliquent à toutes les correspondances du texte d'entrée, pas juste la première.
+    // Par exemple pour trouver toutes les correspondances d'une regex.
     fmt.Println(r.FindAllString("peach punch pinch", -1))
 
-    // These `All` variants are available for the other
-    // functions we saw above as well.
+    // Ces variantes `All` sont également disponibles pour toutes les autres méthodes vues plus haut
     fmt.Println(r.FindAllStringSubmatchIndex(
         "peach punch pinch", -1))
 
-    // Providing a non-negative integer as the second
-    // argument to these functions will limit the number
-    // of matches.
+    // Fournir un entier non négatif en second argument à ces fonctions limite le nombre de résultats.
     fmt.Println(r.FindAllString("peach punch pinch", 2))
 
-    // Our examples above had string arguments and used
-    // names like `MatchString`. We can also provide
-    // `[]byte` arguments and drop `String` from the
-    // function name.
+    // Nos examples ci-dessus avaient comme arguments des strings et avaient des noms comme `MatchString`. On peut également fournir des arguments `[]byte` et oublier le `String` des nombres de fonction.
     fmt.Println(r.Match([]byte("peach")))
 
-    // When creating constants with regular expressions
-    // you can use the `MustCompile` variation of
-    // `Compile`. A plain `Compile` won't work for
-    // constants because it has 2 return values.
+    // Lorsqu'on crée des constrantes avec des expressions régulières, on peut utiliser la variation `MustCompile`  de `Compile`. Un simple `Compile` ne marchera pas car il a deux valeurs de retour.
     r = regexp.MustCompile("p([a-z]+)ch")
     fmt.Println(r)
 
-    // The `regexp` package can also be used to replace
-    // subsets of strings with other values.
+    // Le package `regexp` peut également être utilisé pour remplacer des sous-ensembles de chaînes avec d'autres valeurs.
     fmt.Println(r.ReplaceAllString("a peach", "<fruit>"))
 
-    // The `Func` variant allows you to transform matched
-    // text with a given function.
+    // La variante `Func` permet de transformer les textes de correspondance selon une fonction donnée.
     in := []byte("a peach")
     out := r.ReplaceAllFunc(in, bytes.ToUpper)
     fmt.Println(string(out))
