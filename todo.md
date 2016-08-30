@@ -58,8 +58,8 @@ Translate readme.md into readme-fr.md
 [x] Epoch
 [x] Time Formatting / Parsing
 [x] Random Numbers
-[ ] Number Parsing
-[ ] URL Parsing
+[x] Number Parsing
+[x] URL Parsing
 [ ] SHA1 Hashes
 [ ] Base64 Encoding
 [x] Reading Files
@@ -67,7 +67,7 @@ Translate readme.md into readme-fr.md
 [ ] Line Filters
 [x] Command-Line Arguments
 [ ] Command-Line Flags
-[ ] Environment Variables
+[x] Environment Variables
 [ ] Spawning Processes
 [ ] Exec'ing Processes
 [ ] Signals
