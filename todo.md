@@ -54,9 +54,9 @@ Translate readme.md into readme-fr.md
 [x] String Formatting
 [ ] Regular Expressions
 [ ] JSON
-[ ] Time
-[ ] Epoch
-[ ] Time Formatting / Parsing
+[x] Time
+[x] Epoch
+[x] Time Formatting / Parsing
 [ ] Random Numbers
 [ ] Number Parsing
 [ ] URL Parsing
