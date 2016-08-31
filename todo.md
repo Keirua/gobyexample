@@ -64,9 +64,9 @@ Translate readme.md into readme-fr.md
 [ ] Base64 Encoding
 [x] Reading Files
 [x] Writing Files
-[ ] Line Filters
+[x] Line Filters
 [x] Command-Line Arguments
-[ ] Command-Line Flags
+[x] Command-Line Flags
 [x] Environment Variables
 [ ] Spawning Processes
 [ ] Exec'ing Processes

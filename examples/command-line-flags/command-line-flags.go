@@ -1,46 +1,30 @@
-// [_Command-line flags_](http://en.wikipedia.org/wiki/Command-line_interface#Command-line_option)
-// are a common way to specify options for command-line
-// programs. For example, in `wc -l` the `-l` is a
-// command-line flag.
+// Les options de [ligne de commande](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande#Option)
+// sont une manière courante de préciser des options pour des programmes en ligne de commande.
+// Par exemple, dans `wc -l`, le `-l` est une option.
 
 package main
 
-// Go provides a `flag` package supporting basic
-// command-line flag parsing. We'll use this package to
-// implement our example command-line program.
+// Go fournit un package `flag` qui permet d'analyser des options simples. Nous utiliserons ce package pour implémenter notre programme d'exemple.
 import "flag"
 import "fmt"
 
 func main() {
 
-    // Basic flag declarations are available for string,
-    // integer, and boolean options. Here we declare a
-    // string flag `word` with a default value `"foo"`
-    // and a short description. This `flag.String` function
-    // returns a string pointer (not a string value);
-    // we'll see how to use this pointer below.
-    wordPtr := flag.String("word", "foo", "a string")
+    // Des déclarations d'options simples sont disponibles pour les string, les entiers et les booléens. Ici on déclare une option `word` avec comme valeur par défaut `"foo"`, et une courte description. La fonction `flag.String` renvoie un pointeur sur la chaîne (pas une chaîne directement). Nous verrons comment utliser ce pointeur après.
+    wordPtr := flag.String("word", "foo", "une chaine")
 
-    // This declares `numb` and `fork` flags, using a
-    // similar approach to the `word` flag.
-    numbPtr := flag.Int("numb", 42, "an int")
-    boolPtr := flag.Bool("fork", false, "a bool")
+    // On déclare des options `numb` et `fork`, en utilisant une approche similaire.
+    numbPtr := flag.Int("numb", 42, "un int")
+    boolPtr := flag.Bool("fork", false, "un booleen")
 
-    // It's also possible to declare an option that uses an
-    // existing var declared elsewhere in the program.
-    // Note that we need to pass in a pointer to the flag
-    // declaration function.
+    // Il est également possible de déclarer l'option en utilisant une variable déjà déclarée ailleurs dans le programme. A noter que l'on doit passer un pointeur à la fonction de déclaration d'option.
     var svar string
     flag.StringVar(&svar, "svar", "bar", "a string var")
 
-    // Once all flags are declared, call `flag.Parse()`
-    // to execute the command-line parsing.
+    // Une fois que toutes les options sont déclarées, il faut appeller `flag.Parse()` pour exécuter l'analyse des paramètres de ligne de commande.
     flag.Parse()
 
-    // Here we'll just dump out the parsed options and
-    // any trailing positional arguments. Note that we
-    // need to dereference the pointers with e.g. `*wordPtr`
-    // to get the actual option values.
+    // Ici, on va afficher les options analysées ainsi que les éventuels paramètres restants. A noter qu'il faut déréférencer les pointeurs, par ex. avec `*wordPtr` pour obtenir la véritable valeur des options.
     fmt.Println("word:", *wordPtr)
     fmt.Println("numb:", *numbPtr)
     fmt.Println("fork:", *boolPtr)

@@ -1,11 +1,6 @@
-// A _line filter_ is a common type of program that reads
-// input on stdin, processes it, and then prints some
-// derived result to stdout. `grep` and `sed` are common
-// line filters.
+// Un _filtre de ligne_ est un type de programme courant qui lit des entrées sur stdin, les traite, puis affiche un resultat dérivé sur stdout. `grep` et `sed` sont des exemples de filtres de ligne.
 
-// Here's an example line filter in Go that writes a
-// capitalized version of all input text. You can use this
-// pattern to write your own Go line filters.
+// Voici un filtre de ligne en Go qui met en majuscule tout le texte d'entrée. Vous pouvez utilisez ce modèle pour écrire vos filtres de lignes en Go.
 package main
 
 import (
@@ -17,23 +12,18 @@ import (
 
 func main() {
 
-    // Wrapping the unbuffered `os.Stdin` with a buffered
-    // scanner gives us a convenient `Scan` method that
-    // advances the scanner to the next token; which is
-    // the next line in the default scanner.
+    // On encadre `os.Stdin` qui n'a pas de buffer, avec un scanner qui en a un. Il nous fournit en outre une méthode pratique `Scan` qui avance la lecture jusqu'à la marque suivant, c'est à dire ici la ligne suivante dans le scanner par défaut.
     scanner := bufio.NewScanner(os.Stdin)
 
     for scanner.Scan() {
-        // `Text` returns the current token, here the next line,
-        // from the input.
+        // `Text` renvoie la zone de texte courante, ici une ligne du texte d'entrée.
         ucl := strings.ToUpper(scanner.Text())
 
-        // Write out the uppercased line.
+        // On affiche la ligne en majuscules.
         fmt.Println(ucl)
     }
 
-    // Check for errors during `Scan`. End of file is
-    // expected and not reported by `Scan` as an error.
+    // On teste les erreurs durant `Scan`. Un caractère de fin de fichier est attendu et si on en trouve pas, il est reporté par `Scan` comme une erreur.
     if err := scanner.Err(); err != nil {
         fmt.Fprintln(os.Stderr, "error:", err)
         os.Exit(1)
