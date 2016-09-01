@@ -1,4 +1,5 @@
-# Exécuter notre programme d'analyse d'URL montre tous les différentes morceaux que nous avons extrait.
+# Exécuter notre programme d'analyse d'URL montre tous
+# les différentes morceaux que nous avons extrait.
 $ go run url-parsing.go 
 postgres
 user:pass

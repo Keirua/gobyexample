@@ -40,7 +40,7 @@ func main() {
     mapB, _ := json.Marshal(mapD)
     fmt.Println(string(mapB))
 
-    // Le package JSON peut automatiquement encoder vos types de données custom. 
+    // Le package JSON peut automatiquement encoder vos types de données custom.
     // Il incluera seulement les champs exportés dans la sortie encodée et utilisera par défaut ces noms comme clés JSON.
     res1D := &Response1{
         Page:   1,

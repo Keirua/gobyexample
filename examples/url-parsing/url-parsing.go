@@ -1,4 +1,3 @@
-
 // Les URLs fournissent une [manière uniforme de localiser des ressources](http://adam.heroku.com/past/2010/3/30/urls_are_the_uniform_way_to_locate_resources/).
 // Voici comment analyser les URLs en Go.
 
@@ -9,7 +8,7 @@ import "net"
 import "net/url"
 
 func main() {
-    // Nous allons analyser cette URL d'exemple, qui 
+    // Nous allons analyser cette URL d'exemple, qui
     // inclue un protocole (scheme en anglais), des
     // informations d'authentification, un hôte, un port,
     // un chemin, des paramètres de requêtes et un
@@ -24,7 +23,6 @@ func main() {
 
     // On accède facilement au protocole.
     fmt.Println(u.Scheme)
-
 
     // `User` contient toutes les informations d'authentificiation; on appele `Username` et `Password` dessus pour les valeurs individuelles.
     fmt.Println(u.User)
@@ -42,7 +40,7 @@ func main() {
     fmt.Println(u.Path)
     fmt.Println(u.Fragment)
 
-    // Pour obtenir les paramètres de requête dans une chaine au format `k=v`, on utilise  `RawQuery`. On peut aussi extraire les paramètres de requête dans une `map`. 
+    // Pour obtenir les paramètres de requête dans une chaine au format `k=v`, on utilise  `RawQuery`. On peut aussi extraire les paramètres de requête dans une `map`.
     // Les maps de paramètres de requêtes ont comme clé des string et comme valeur des slices de string, donc il faut accéder à l'index 0 si on veut seulement la première valeur.
     fmt.Println(u.RawQuery)
     m, _ := url.ParseQuery(u.RawQuery)

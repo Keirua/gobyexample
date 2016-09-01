@@ -12,7 +12,7 @@ func main() {
     f, _ := strconv.ParseFloat("1.234", 64)
     fmt.Println(f)
 
-    // 
+    //
     // Pour `ParseInt`, le `0` signifie qu'on cherche à déduire la base à partir de la chaine. `64` demande à faire rentrer le résultat dans 64 bits.
     i, _ := strconv.ParseInt("123", 0, 64)
     fmt.Println(i)
@@ -28,7 +28,6 @@ func main() {
     // `Atoi` est une fonction pratique pour extraire facilement un int en base 10.
     k, _ := strconv.Atoi("135")
     fmt.Println(k)
-
 
     // Les fonctions de parsing renvoient une erreur lorsque les données d'entrée ne conviennent pas.
     _, e := strconv.Atoi("wat")

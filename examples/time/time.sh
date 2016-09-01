@@ -21,4 +21,5 @@ false
 2012-10-31 15:50:13.793654 +0000 UTC
 2006-12-05 01:19:43.509120474 +0000 UTC
 
-# Ensuite nous allons regarder l'idée liée de temps relativement au temps Unix.
+# Ensuite nous allons regarder l'idée liée de temps
+# relativement au temps Unix.
