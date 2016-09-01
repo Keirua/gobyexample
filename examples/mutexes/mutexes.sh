@@ -1,9 +1,10 @@
-# Running the program shows that we executed about
-# 3,500,000 operations against our `mutex`-synchronized
-# `state`.
+# Exécuter le programme montre qu'on a exécuté environ
+# 3,500,000 d'opérations sur `state`, synchronisé par un
+# `mutex`
 $ go run mutexes.go
 ops: 3598302
 state: map[1:38 4:98 2:23 3:85 0:44]
 
-# Next we'll look at implementing this same state
-# management task using only goroutines and channels.
+# Ensuite nous verrons comment implémenter la même
+# gestion d'état avec uniquement des goroutines et
+# des canaux.

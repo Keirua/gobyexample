@@ -1,7 +1,4 @@
-// In the previous example we saw how to manage simple
-// counter state using atomic operations. For more complex
-// state we can use a _[mutex](http://en.wikipedia.org/wiki/Mutual_exclusion)_
-// to safely access data across multiple goroutines.
+// Dans l'exemple précédent nous avons vu comment gérer des compteurs d'état simples avec des opérations atomiques. Pour des états plus compliqués, on peut utiliser un _[mutex](http://en.wikipedia.org/wiki/Mutual_exclusion)_ pour accéder de  manière sûre à des données à travers plusieurs goroutines.
 
 package main
 
@@ -16,51 +13,52 @@ import (
 
 func main() {
 
-    // For our example the `state` will be a map.
+    // Pour notre exemple, l'état `state` sera une map.
     var state = make(map[int]int)
 
-    // This `mutex` will synchronize access to `state`.
+    // Ce `mutex` va synchroniser l'accès à `state`.
     var mutex = &sync.Mutex{}
 
-    // To compare the mutex-based approach with another
-    // we'll see later, `ops` will count how many
-    // operations we perform against the state.
+    // Pour comparer l'approche avec des mutexes avec une autre que nous verrons plus tard, `ops` va compter combien d'opérations nous réalisons avec l'état.
     var ops int64 = 0
 
-    // Here we start 100 goroutines to execute repeated
-    // reads against the state.
+    // Ici on lance 100 goroutines pour exécuter des lectures répétées sur l'état.
     for r := 0; r < 100; r++ {
         go func() {
             total := 0
             for {
 
-                // For each read we pick a key to access,
-                // `Lock()` the `mutex` to ensure
-                // exclusive access to the `state`, read
-                // the value at the chosen key,
-                // `Unlock()` the mutex, and increment
-                // the `ops` count.
+                // A chaque lecture, on sélectionne une
+                // clé à laquelle on souhaite accéder,
+                // on bloque le mutex avec `Lock()` pour 
+                // s'assurer un accès exclusif à l'état,
+                // on lit la valeur de la clé choisie, on
+                // débloque le mutex, puis on incrémente
+                // le compteur.
                 key := rand.Intn(5)
                 mutex.Lock()
                 total += state[key]
                 mutex.Unlock()
                 atomic.AddInt64(&ops, 1)
 
-                // In order to ensure that this goroutine
-                // doesn't starve the scheduler, we explicitly
-                // yield after each operation with
-                // `runtime.Gosched()`. This yielding is
-                // handled automatically with e.g. every
-                // channel operation and for blocking
-                // calls like `time.Sleep`, but in this
-                // case we need to do it manually.
+                // Pour nous assurer que cette goroutine 
+                // ne prend pas toutes les ressources, on
+                // rend la main explicitement après
+                // chaque opération avec
+                // `runtime.Gosched()`. Le programmateur
+                // gère normalement automatiquement ceci,
+                // par ex. après les opérations sur les
+                // canaux et pour les appels bloquants
+                // comme `time.Sleep`, mais dans ce cas
+                // on doit le faire manuellement.
                 runtime.Gosched()
             }
         }()
     }
 
-    // We'll also start 10 goroutines to simulate writes,
-    // using the same pattern we did for reads.
+    // On démarre également 10 goroutines pour simuler 
+    // des écritures, de la même manière que pour les
+    // écritures.
     for w := 0; w < 10; w++ {
         go func() {
             for {
@@ -75,15 +73,17 @@ func main() {
         }()
     }
 
-    // Let the 10 goroutines work on the `state` and
-    // `mutex` for a second.
+    // On fait travailler les 10 goroutines sur les
+    // `state` et `mutex` pendant une seconde.
     time.Sleep(time.Second)
 
-    // Take and report a final operations count.
+    // On rapporte le nombre total d'opérations
+    // réalisées.
     opsFinal := atomic.LoadInt64(&ops)
     fmt.Println("ops:", opsFinal)
 
-    // With a final lock of `state`, show how it ended up.
+    // Avec un bloquage final de `state`, on peut
+    // connaitre l'état final.
     mutex.Lock()
     fmt.Println("state:", state)
     mutex.Unlock()

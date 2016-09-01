@@ -43,7 +43,7 @@ Stuff that needs to be done in order to translate gobyexample into french
  - [x] Worker Pools
  - [x] Rate Limiting
  - [x] Atomic Counters
- - [ ] Mutexes
+ - [x] Mutexes
  - [ ] Stateful Goroutines
  - [x] Sorting
  - [x] Sorting by Functions
