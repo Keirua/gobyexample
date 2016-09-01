@@ -59,3 +59,5 @@ Contributor translations of the Go by Example site are available in:
 Thanks to [Jeremy Ashkenas](https://github.com/jashkenas)
 for [Docco](http://jashkenas.github.com/docco/), which
 inspired this project.
+
+Thanks also to the contributors to the project, like skrul, whose job have not yet been included the the gobyexample main site but have been included here : PR about [named return value](https://github.com/mmcgrana/gobyexample/pull/100) and [type switch](https://github.com/mmcgrana/gobyexample/pull/99)

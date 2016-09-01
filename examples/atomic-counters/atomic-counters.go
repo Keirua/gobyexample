@@ -19,7 +19,7 @@ func main() {
     // représenter notre compteur (toujours positif).
     var ops uint64 = 0
 
-    // Pour simuler des mises à jour concurrentes, nous 
+    // Pour simuler des mises à jour concurrentes, nous
     // commençons 50 goroutines qui incrémentent le
     // compteur environ une fois par milliseconde.
     for i := 0; i < 50; i++ {
