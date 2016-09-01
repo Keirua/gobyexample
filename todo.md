@@ -41,7 +41,7 @@ Stuff that needs to be done in order to translate gobyexample into french
  - [x] Timers
  - [x] Tickers
  - [x] Worker Pools
- - [ ] Rate Limiting
+ - [x] Rate Limiting
  - [x] Atomic Counters
  - [ ] Mutexes
  - [ ] Stateful Goroutines
