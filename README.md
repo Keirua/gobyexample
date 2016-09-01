@@ -1,7 +1,9 @@
+[A french translation of this readme is available here](README-fr.md)
+
 ## Go by Example
 
-Content and build toolchain for [Go by Example](https://gobyexample.com),
-a site that teaches Go via annotated example programs.
+Content and build toolchain for the french [Go by Example](https://gobyexample.com) website,
+a site that teaches Go via annotated example programs. It is a translation of the original [Go by Example](https://gobyexample.com)
 
 
 ### Overview
