@@ -53,7 +53,7 @@ Translate readme.md into readme-fr.md
 [x] String Functions
 [x] String Formatting
 [x] Regular Expressions
-[ ] JSON
+[x] JSON
 [x] Time
 [x] Epoch
 [x] Time Formatting / Parsing
