@@ -2,6 +2,7 @@ Hello World
 Values
 Variables
 Constants
+Shorthand notation
 For
 If/Else
 Switch
