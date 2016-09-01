@@ -1,6 +1,4 @@
-// Go offers built-in support for JSON encoding and
-// decoding, including to and from built-in and custom
-// data types.
+// Go fournit un support pour l'encodage et le décodage en JSON, à la fois pour les types intégrés mais aussi pour les types sur mesure.
 
 package main
 
@@ -8,8 +6,7 @@ import "encoding/json"
 import "fmt"
 import "os"
 
-// We'll use these two structs to demonstrate encoding and
-// decoding of custom types below.
+// Nous allons utiliser ces deux structures pour démontrer l'encodage et le décodage vers des types de données custom plus bas.
 type Response1 struct {
     Page   int
     Fruits []string
@@ -21,9 +18,7 @@ type Response2 struct {
 
 func main() {
 
-    // First we'll look at encoding basic data types to
-    // JSON strings. Here are some examples for atomic
-    // values.
+    // Nous allons commencer par encoder des types de données de base vers une chaîne JSON. Voici quelques exemples pour des valeurs atomiques.
     bolB, _ := json.Marshal(true)
     fmt.Println(string(bolB))
 
@@ -36,8 +31,7 @@ func main() {
     strB, _ := json.Marshal("gopher")
     fmt.Println(string(strB))
 
-    // And here are some for slices and maps, which encode
-    // to JSON arrays and objects as you'd expect.
+    // Et voici quelques exemples pour les slices et les maps, qui encodent vers des tableaux et objets JSON comme attendu.
     slcD := []string{"apple", "peach", "pear"}
     slcB, _ := json.Marshal(slcD)
     fmt.Println(string(slcB))
@@ -46,73 +40,50 @@ func main() {
     mapB, _ := json.Marshal(mapD)
     fmt.Println(string(mapB))
 
-    // The JSON package can automatically encode your
-    // custom data types. It will only include exported
-    // fields in the encoded output and will by default
-    // use those names as the JSON keys.
+    // Le package JSON peut automatiquement encoder vos types de données custom. 
+    // Il incluera seulement les champs exportés dans la sortie encodée et utilisera par défaut ces noms comme clés JSON.
     res1D := &Response1{
         Page:   1,
         Fruits: []string{"apple", "peach", "pear"}}
     res1B, _ := json.Marshal(res1D)
     fmt.Println(string(res1B))
 
-    // You can use tags on struct field declarations
-    // to customize the encoded JSON key names. Check the
-    // definition of `Response2` above to see an example
-    // of such tags.
+    // Vous pouvez utiliser des tags sur les déclarations de champs de structures pour personnaliser l'encodage des noms de clé JSON. Regardez le définition de `Response2` au-dessus pour voir un exemple de tels tags.
     res2D := &Response2{
         Page:   1,
         Fruits: []string{"apple", "peach", "pear"}}
     res2B, _ := json.Marshal(res2D)
     fmt.Println(string(res2B))
 
-    // Now let's look at decoding JSON data into Go
-    // values. Here's an example for a generic data
-    // structure.
+    // Maintenant regardons le décodage des données JSON vers des valeurs. Voici un exemple pour une structure de donnée générique.
     byt := []byte(`{"num":6.13,"strs":["a","b"]}`)
 
-    // We need to provide a variable where the JSON
-    // package can put the decoded data. This
-    // `map[string]interface{}` will hold a map of strings
-    // to arbitrary data types.
+    // Nous devons fournir une variable dans laquelle le package JSON peut décoder les données. Cette `map[string]interface{}` contiendra une map avec chaînes comme clé et comme valeur des types arbitraires.
     var dat map[string]interface{}
 
-    // Here's the actual decoding, and a check for
-    // associated errors.
+    // Voici le décodage, accompagné d'un test d'erreurs
     if err := json.Unmarshal(byt, &dat); err != nil {
         panic(err)
     }
     fmt.Println(dat)
 
-    // In order to use the values in the decoded map,
-    // we'll need to cast them to their appropriate type.
-    // For example here we cast the value in `num` to
-    // the expected `float64` type.
+    // Pour utiliser les données dans la map décodée, nous devons les convertir dans le type approprié. Par exemple ici, on convertir `num` en `float64`.
     num := dat["num"].(float64)
     fmt.Println(num)
 
-    // Accessing nested data requires a series of
-    // casts.
+    // Accéder aux données imbriquées nécessite une série de casts.
     strs := dat["strs"].([]interface{})
     str1 := strs[0].(string)
     fmt.Println(str1)
 
-    // We can also decode JSON into custom data types.
-    // This has the advantages of adding additional
-    // type-safety to our programs and eliminating the
-    // need for type assertions when accessing the decoded
-    // data.
+    // Nous pouvons aussi décoder du JSON dans des types de données custom. Ceci a également l'avantage d'assurer une sécurité au niveau des types de données, et d'éliminer le besoin de vérifier les types lorsqu'on accède aux données décodées.
     str := `{"page": 1, "fruits": ["apple", "peach"]}`
     res := Response2{}
     json.Unmarshal([]byte(str), &res)
     fmt.Println(res)
     fmt.Println(res.Fruits[0])
 
-    // In the examples above we always used bytes and
-    // strings as intermediates between the data and
-    // JSON representation on standard out. We can also
-    // stream JSON encodings directly to `os.Writer`s like
-    // `os.Stdout` or even HTTP response bodies.
+    // Dans les exemples ci-dessus, nous avons toujours utilisé des octets et des chaînes comme données intermédiaires entre les données et leur représentation JSON sur la sortie standard. On peut également streamer l'encodage directement dans un `os.Writer` comme `os.Stdout`, ou même dans le corps d'une réponse HTTP.
     enc := json.NewEncoder(os.Stdout)
     d := map[string]int{"apple": 5, "lettuce": 7}
     enc.Encode(d)
