@@ -1,5 +1,6 @@
 // Notre premier programme va afficher le
 // classique "hello world"
+
 // Voici le code source complet.
 package main
 

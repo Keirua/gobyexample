@@ -1,5 +1,6 @@
-// En Go, un _tableau_ ou _array_ est une séquence numérotée
-// d'éléments d'une longueur donnée
+// En Go, un _tableau_ ou _array_ est une séquence
+// numérotée d'éléments d'une longueur donnée
+
 package main
 
 import "fmt"

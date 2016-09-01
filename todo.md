@@ -2,8 +2,8 @@ Todo.md
 
 # General stuff
 
-Translate templates
-Translate readme.md into readme-fr.md
+[x] Translate templates
+[x] Translate readme.md into readme-fr.md
 
 # Examples
 
