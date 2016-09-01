@@ -1,16 +1,11 @@
-// In this example we'll look at how to implement
-// a _worker pool_ using goroutines and channels.
+// Dans cet exemple, nous allons regarder comment implémenter un worker poole en utilisant des goroutines et des canaus.
 
 package main
 
 import "fmt"
 import "time"
 
-// Here's the worker, of which we'll run several
-// concurrent instances. These workers will receive
-// work on the `jobs` channel and send the corresponding
-// results on `results`. We'll sleep a second per job to
-// simulate an expensive task.
+// Voici notre worker, dont nous allons lancer plusieurs instances concurrentes. Ces workers recevront du travail dans le canal `jobs` et enverront le résultat correspondant dans `results`. Nous ferons une pause d'une seconde par tâche pour simuler une opération complexe.
 func worker(id int, jobs <-chan int, results chan<- int) {
     for j := range jobs {
         fmt.Println("worker", id, "processing job", j)
@@ -21,26 +16,22 @@ func worker(id int, jobs <-chan int, results chan<- int) {
 
 func main() {
 
-    // In order to use our pool of workers we need to send
-    // them work and collect their results. We make 2
-    // channels for this.
+    // Afin d'utiliser notre pool de workers, nous devons leur envoyer du travail et collecter leurs résultats. On crée deux canaux pour celà.
     jobs := make(chan int, 100)
     results := make(chan int, 100)
 
-    // This starts up 3 workers, initially blocked
-    // because there are no jobs yet.
+    // On démarre 3 workers, initiallement bloqués car ils n'ont pas de travaux pour le moment.
     for w := 1; w <= 3; w++ {
         go worker(w, jobs, results)
     }
 
-    // Here we send 9 `jobs` and then `close` that
-    // channel to indicate that's all the work we have.
+    // Ici on envoit 9 travaux, puis ferme ce canal pour indiquer que c'est tout le travail que nous avons.
     for j := 1; j <= 9; j++ {
         jobs <- j
     }
     close(jobs)
 
-    // Finally we collect all the results of the work.
+    // Finalement, nous collectons les résultats du travail.
     for a := 1; a <= 9; a++ {
         <-results
     }

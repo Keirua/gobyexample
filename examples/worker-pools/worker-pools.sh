@@ -1,7 +1,4 @@
-# Our running program shows the 9 jobs being executed by
-# various workers. The program only takes about 3 seconds
-# despite doing about 9 seconds of total work because
-# there are 3 workers operating concurrently.
+# Notre programme montre, au cours de son exécution, les 9 jobs qui s'exécutent, traités par les différents workers. Le programme prend seulement environ 3 secondes à s'exécuter, bien qu'il traite environ 9 secondes de travail car il y a 3 workers qui travaillent de manière concurrente.
 $ time go run worker-pools.go 
 worker 1 processing job 1
 worker 2 processing job 2

@@ -1,9 +1,4 @@
-// The primary mechanism for managing state in Go is
-// communication over channels. We saw this for example
-// with [worker pools](worker-pools). There are a few other
-// options for managing state though. Here we'll
-// look at using the `sync/atomic` package for _atomic
-// counters_ accessed by multiple goroutines.
+// Le mécanisme principal pour gérer les états en Go, c'est la communication à travers les canaux. Nous avons vu ceci par exemple avec les [worker pools](worker-pools). Il y a quelques autres options pour gérer les états ceci dit. Ici, nous allons utiliser le package `sync/atomic` pour des _compteurs atomiques_ auxquels accèdent plusieurs goroutines.
 
 package main
 
@@ -14,37 +9,27 @@ import "runtime"
 
 func main() {
 
-    // We'll use an unsigned integer to represent our
-    // (always-positive) counter.
+    // Nous utiliserons un entier non-signé pour représenter notre compteur (toujours positif).
     var ops uint64 = 0
 
-    // To simulate concurrent updates, we'll start 50
-    // goroutines that each increment the counter about
-    // once a millisecond.
+    // Pour simuler des mises à jour concurrentes, nous commençons 50 goroutines qui incrémentent le compteur environ une fois par milliseconde.
     for i := 0; i < 50; i++ {
         go func() {
             for {
-                // To atomically increment the counter we
-                // use `AddUint64`, giving it the memory
-                // address of our `ops` counter with the
-                // `&` syntax.
+                // Pour incrémenter atomiquement le compteur, nous utilisons `AddUint64`, en luis donnant l'adresse mémoire de notre compteur `ops` avec la syntaxe `&`.
                 atomic.AddUint64(&ops, 1)
 
-                // Allow other goroutines to proceed.
+                // On fait continuer la goroutine.
                 runtime.Gosched()
             }
         }()
     }
 
-    // Wait a second to allow some ops to accumulate.
+    // On attend une seconde pour permettre aux goroutines de travailler, et au compteur de grandir en valeur.
     time.Sleep(time.Second)
 
-    // In order to safely use the counter while it's still
-    // being updated by other goroutines, we extract a
-    // copy of the current value into `opsFinal` via
-    // `LoadUint64`. As above we need to give this
-    // function the memory address `&ops` from which to
-    // fetch the value.
+    // Afin d'utiliser le compteur de manière sûre alors qu'il est toujours mis à jour par les autres goroutines, on extraie une copie de la valeur courante dans `opsFinal` via `LoadUint64`.
+    // Comme plus haut, nous devons donner à cette fonction l'adresse mémoire `&ops` depuis laquelle chercher la valeur.
     opsFinal := atomic.LoadUint64(&ops)
     fmt.Println("ops:", opsFinal)
 }

@@ -40,9 +40,9 @@ Translate readme.md into readme-fr.md
 [x] Range over Channels
 [x] Timers
 [x] Tickers
-[ ] Worker Pools
+[x] Worker Pools
 [ ] Rate Limiting
-[ ] Atomic Counters
+[x] Atomic Counters
 [ ] Mutexes
 [ ] Stateful Goroutines
 [x] Sorting

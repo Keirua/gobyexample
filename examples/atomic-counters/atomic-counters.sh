@@ -1,7 +1,5 @@
-# Running the program shows that we executed about
-# 40,000 operations.
+# Lancer le programme montre qu'environ 40,000 operations ont été exécutées.
 $ go run atomic-counters.go
 ops: 40200
 
-# Next we'll look at mutexes, another tool for managing
-# state.
+# Ensuite nous regarderons les mutexes, un autre outil pour gérer les états.
