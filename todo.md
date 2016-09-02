@@ -69,7 +69,7 @@ Stuff that needs to be done in order to translate gobyexample into french
  - [x] Command-Line Arguments
  - [x] Command-Line Flags
  - [x] Environment Variables
- - [ ] Spawning Processes
+ - [x] Spawning Processes
  - [ ] Exec'ing Processes
  - [x] Signals
  - [x] Exit
