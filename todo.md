@@ -4,6 +4,7 @@ Stuff that needs to be done in order to translate gobyexample into french
 
  - [x] Translate templates
  - [x] Translate readme.md into readme-fr.md
+ - [ ] Formatting examples
 
 # Examples
 
@@ -44,7 +45,7 @@ Stuff that needs to be done in order to translate gobyexample into french
  - [x] Rate Limiting
  - [x] Atomic Counters
  - [x] Mutexes
- - [ ] Stateful Goroutines
+ - [x] Stateful Goroutines
  - [x] Sorting
  - [x] Sorting by Functions
  - [x] Panic
@@ -70,7 +71,7 @@ Stuff that needs to be done in order to translate gobyexample into french
  - [x] Environment Variables
  - [ ] Spawning Processes
  - [ ] Exec'ing Processes
- - [ ] Signals
+ - [x] Signals
  - [x] Exit
  - [x] shorthand notation
 

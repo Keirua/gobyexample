@@ -1,9 +1,6 @@
-// Sometimes we'd like our Go programs to intelligently
-// handle [Unix signals](http://en.wikipedia.org/wiki/Unix_signal).
-// For example, we might want a server to gracefully
-// shutdown when it receives a `SIGTERM`, or a command-line
-// tool to stop processing input if it receives a `SIGINT`.
-// Here's how to handle signals in Go with channels.
+// Parfois, on voudrait que les programmes en Go gèrent intelligemment les [signaux Unix](http://en.wikipedia.org/wiki/Unix_signal).
+// Par exemple, on peut vouloir qu'un serveur s'éteigne gracieusement lorsqu'il reçoit le signal `SIGTERM`, ou un qu'outil en ligne de commande arrête de traiter les entrées lorsuq'il reçoit un `SIGINT`.
+// Voici comment gérer les signaux en Go avec des canaux.
 
 package main
 
@@ -14,20 +11,14 @@ import "syscall"
 
 func main() {
 
-    // Go signal notification works by sending `os.Signal`
-    // values on a channel. We'll create a channel to
-    // receive these notifications (we'll also make one to
-    // notify us when the program can exit).
+    // Go signale les travaux de notification en envoyer des valeurs `os.Signal` sur un canal. Nous allons créer un canal pour recevoir ces notifications. Nous allons aussi en faire un pour nous notifier quand le programme peut se terminer.
     sigs := make(chan os.Signal, 1)
     done := make(chan bool, 1)
 
-    // `signal.Notify` registers the given channel to
-    // receive notifications of the specified signals.
+    // `signal.Notify` enregistre le canal fournit pour recevoir les notifications sur les signaux précisés.
     signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM)
 
-    // This goroutine executes a blocking receive for
-    // signals. When it gets one it'll print it out
-    // and then notify the program that it can finish.
+    // Cette goroutine exécute une réception bloquante des signaux. Quand elle se termine, elle l'affichera et notifiera le programme qu'il peut terminer.
     go func() {
         sig := <-sigs
         fmt.Println()
@@ -35,9 +26,7 @@ func main() {
         done <- true
     }()
 
-    // The program will wait here until it gets the
-    // expected signal (as indicated by the goroutine
-    // above sending a value on `done`) and then exit.
+    // Le programme va attendre ici jusqu'à ce qu'il reçoive le signal attendu (comme indiqué par la goroutine au dessus, qui envoit une valeur sur `done`), puis termine.
     fmt.Println("awaiting signal")
     <-done
     fmt.Println("exiting")
