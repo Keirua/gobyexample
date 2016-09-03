@@ -8,31 +8,22 @@ import "os/exec"
 
 func main() {
 
-    // For our example we'll exec `ls`. Go requires an
-    // absolute path to the binary we want to execute, so
-    // we'll use `exec.LookPath` to find it (probably
-    // `/bin/ls`).
+    // Pour cet exemple, nous allons lancer `ls`. Go a besoin d'un chemin absolu vers l'exécutable que l'on veut lancer, donc on va utiliser `exec.LookPath` pour le localiser (il est probablement situé dans `/bin/ls`).
     binary, lookErr := exec.LookPath("ls")
     if lookErr != nil {
         panic(lookErr)
     }
 
-    // `Exec` requires arguments in slice form (as
-    // apposed to one big string). We'll give `ls` a few
-    // common arguments. Note that the first argument should
-    // be the program name.
+    // `Exec` a besoin d'une slice pour les arguments (et non une grosse chaîne).
+    // On va donner à `ls` quelques arguments courants.
+    // A noter que le premier arguments doit être le nom du programme.
     args := []string{"ls", "-a", "-l", "-h"}
 
-    // `Exec` also needs a set of [environment variables](environment-variables)
-    // to use. Here we just provide our current
-    // environment.
+    // `Exec` a également besoin d'un ensemble de [variables d'environnement](environment-variables). Ici, on va lui fournir notre environnement actuel.
     env := os.Environ()
 
-    // Here's the actual `syscall.Exec` call. If this call is
-    // successful, the execution of our process will end
-    // here and be replaced by the `/bin/ls -a -l -h`
-    // process. If there is an error we'll get a return
-    // value.
+    // Voici enfin l'appel à `syscall.Exec`. Si l'appel réussit, l'exécution de notre processus va s'arrêter et sera remplacé par celui de `/bin/ls -a -l -h`
+    // S'il y a une erreur, nous aurons une valeur de retour.
     execErr := syscall.Exec(binary, args, env)
     if execErr != nil {
         panic(execErr)

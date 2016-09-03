@@ -30,7 +30,7 @@ func main() {
 
                 // A chaque lecture, on sélectionne une
                 // clé à laquelle on souhaite accéder,
-                // on bloque le mutex avec `Lock()` pour 
+                // on bloque le mutex avec `Lock()` pour
                 // s'assurer un accès exclusif à l'état,
                 // on lit la valeur de la clé choisie, on
                 // débloque le mutex, puis on incrémente
@@ -41,7 +41,7 @@ func main() {
                 mutex.Unlock()
                 atomic.AddInt64(&ops, 1)
 
-                // Pour nous assurer que cette goroutine 
+                // Pour nous assurer que cette goroutine
                 // ne prend pas toutes les ressources, on
                 // rend la main explicitement après
                 // chaque opération avec
@@ -56,7 +56,7 @@ func main() {
         }()
     }
 
-    // On démarre également 10 goroutines pour simuler 
+    // On démarre également 10 goroutines pour simuler
     // des écritures, de la même manière que pour les
     // écritures.
     for w := 0; w < 10; w++ {
