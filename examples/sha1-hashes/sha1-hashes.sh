@@ -1,14 +1,14 @@
-# Running the program computes the hash and prints it in
-# a human-readable hex format.
+# Lancer le programme calcule l'empreinte et l'affiche
+# de manière lisible en hexadécimal.
 $ go run sha1-hashes.go
 sha1 this string
 cf23df2207d99a74fbe169e3eba035e633b65d94
 
+# Vous pouvez calculer des empreintes de la même manière
+# qu'ici avec d'autres méthodes de hachage. Par exemple,
+# pour utiliser MD5, il faut importer `crypto/md5` et
+# utiliser `md5.New()`.
 
-# You can compute other hashes using a similar pattern to
-# the one shown above. For example, to compute MD5 hashes
-# import `crypto/md5` and use `md5.New()`.
-
-# Note that if you need cryptographically secure hashes,
-# you should carefully research
-# [hash strength](http://en.wikipedia.org/wiki/Cryptographic_hash_function)!
+# Si vous avez besoin d'empreintes sûre pour de la
+# cryptographie, vous devriez vous renseigner au sujet de
+# la [force des différentes algorithmes](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique)!

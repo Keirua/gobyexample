@@ -1,4 +1,4 @@
-# Lancer notre programme montre que la gestion d'état par
+# Lancer notre programme montre que la gestion d'état par
 # goroutines réalise environ 800,000 operations par
 # secondes.
 $ go run stateful-goroutines.go

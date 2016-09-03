@@ -61,8 +61,8 @@ Stuff that needs to be done in order to translate gobyexample into french
  - [x] Random Numbers
  - [x] Number Parsing
  - [x] URL Parsing
- - [ ] SHA1 Hashes
- - [ ] Base64 Encoding
+ - [x] SHA1 Hashes
+ - [x] Base64 Encoding
  - [x] Reading Files
  - [x] Writing Files
  - [x] Line Filters
@@ -70,11 +70,10 @@ Stuff that needs to be done in order to translate gobyexample into french
  - [x] Command-Line Flags
  - [x] Environment Variables
  - [x] Spawning Processes
- - [ ] Exec'ing Processes
+ - [x] Exec'ing Processes
  - [x] Signals
  - [x] Exit
  - [x] shorthand notation
-
 
 # Examples without comments
 

@@ -1,4 +1,5 @@
-# Les programmes lancés retourne la même sortie que si nous les avions lancés depuis la ligne de commande.
+# Les programmes lancés retourne la même sortie que si
+# nous les avions lancés depuis la ligne de commande.
 $ go run spawning-processes.go 
 > date
 Wed Oct 10 09:53:11 PDT 2012
