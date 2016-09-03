@@ -19,7 +19,8 @@ func main() {
     // depuis une nouvelle goroutine.
     go func() { messages <- "ping" }()
 
-    // La syntaxe`<-canal` _recoit une valeur depuis un canal.
+    // La syntaxe`<-canal` _recoit une valeur depuis un
+    // canal.
     // Ici on affiche le message `"ping"` envoié au
     // dessus, et l'affiche.
     msg := <-messages
