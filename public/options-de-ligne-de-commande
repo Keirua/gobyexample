@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Options de ligne de commande</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="options-de-ligne-de-commande">
+      <h2><a href="./">Le Go par l'exemple</a>: Options de ligne de commande</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Les options de <a href="https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande#Option">ligne de commande</a>
+sont une manière courante de préciser des options pour des programmes en ligne de commande.
+Par exemple, dans <code>wc -l</code>, le <code>-l</code> est une option.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/5yE-T84hOG"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Go fournit un package <code>flag</code> qui permet d&rsquo;analyser des options simples. Nous utiliserons ce package pour implémenter notre programme d&rsquo;exemple.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;flag&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Des déclarations d&rsquo;options simples sont disponibles pour les string, les entiers et les booléens. Ici on déclare une option <code>word</code> avec comme valeur par défaut <code>&quot;foo&quot;</code>, et une courte description. La fonction <code>flag.String</code> renvoie un pointeur sur la chaîne (pas une chaîne directement). Nous verrons comment utliser ce pointeur après.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">wordPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;word&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;une chaine&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On déclare des options <code>numb</code> et <code>fork</code>, en utilisant une approche similaire.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">numbPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;numb&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s">&quot;un int&quot;</span><span class="p">)</span>
+    <span class="nx">boolPtr</span> <span class="o">:=</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Bool</span><span class="p">(</span><span class="s">&quot;fork&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&quot;un booleen&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Il est également possible de déclarer l&rsquo;option en utilisant une variable déjà déclarée ailleurs dans le programme. A noter que l&rsquo;on doit passer un pointeur à la fonction de déclaration d&rsquo;option.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">svar</span> <span class="kt">string</span>
+    <span class="nx">flag</span><span class="p">.</span><span class="nx">StringVar</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">svar</span><span class="p">,</span> <span class="s">&quot;svar&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span> <span class="s">&quot;a string var&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Une fois que toutes les options sont déclarées, il faut appeller <code>flag.Parse()</code> pour exécuter l&rsquo;analyse des paramètres de ligne de commande.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ici, on va afficher les options analysées ainsi que les éventuels paramètres restants. A noter qu&rsquo;il faut déréférencer les pointeurs, par ex. avec <code>*wordPtr</code> pour obtenir la véritable valeur des options.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;word:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">wordPtr</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;numb:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">numbPtr</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;fork:&quot;</span><span class="p">,</span> <span class="o">*</span><span class="nx">boolPtr</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;svar:&quot;</span><span class="p">,</span> <span class="nx">svar</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;tail:&quot;</span><span class="p">,</span> <span class="nx">flag</span><span class="p">.</span><span class="nx">Args</span><span class="p">())</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Pour expérimenter le programme de test d&rsquo;options de</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">#</span>ligne de commande, le plus simple est de le compiler
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>puis d&rsquo;exécuter le binaire ensuite.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go build <span class="nb">command</span>-line-flags.go
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Essayer le programme en donnant tout d&rsquo;abord des
+valeurs pour toutes les options.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt -numb<span class="o">=</span>7 -fork -svar<span class="o">=</span>flag
+<span class="go">word: opt</span>
+<span class="go">numb: 7</span>
+<span class="go">fork: true</span>
+<span class="go">svar: flag</span>
+<span class="go">tail: []</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Notez que si vous ne précisez pas certaines options,
+elles prennent automatiquement leurs valeurs par défaut.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt
+<span class="go">word: opt</span>
+<span class="go">numb: 42</span>
+<span class="go">fork: false</span>
+<span class="go">svar: bar</span>
+<span class="go">tail: []</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Des arguments restants peuvent être fournis après toutes
+les options</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt a1 a2 a3
+<span class="go">word: opt</span>
+<span class="go">...</span>
+<span class="go">tail: [a1 a2 a3]</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Notez que le package <code>flag</code> a besoin que toutes les
+options apparaissent avant les arguments
+&lsquo;positionnels&rsquo;. Sinon, les options sont traités comme
+des arguments positionnels.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -word<span class="o">=</span>opt a1 a2 a3 -numb<span class="o">=</span>7
+<span class="go">word: opt</span>
+<span class="go">numb: 42</span>
+<span class="go">fork: false</span>
+<span class="go">svar: bar</span>
+<span class="go">tail: [a1 a2 a3 -numb=7]</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Utiliseez les options <code>-h</code> ou <code>--help</code> pour obtenir une
+aide générée automatiquement au sujet des paramètres de
+ligne de commande.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -h
+<span class="go">Usage of ./command-line-flags:</span>
+<span class="go">  -fork=false: a bool</span>
+<span class="go">  -numb=42: an int</span>
+<span class="go">  -svar=&quot;bar&quot;: a string var</span>
+<span class="go">  -word=&quot;foo&quot;: a string</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Si vous fournissez une option qui n&rsquo;était pas précisée
+au package <code>flag</code>, le programme affichera un message
+d&rsquo;erreur puis le texte d&rsquo;aide à nouveau.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> ./command-line-flags -wat
+<span class="go">flag provided but not defined: -wat</span>
+<span class="go">Usage of ./command-line-flags:</span>
+<span class="go">...</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ensuite nous allons regarder les variables
+d&rsquo;environnement, une autre manière courante de
+paramètrer les programmes.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="variables-denvironnement">Variables d'environnement</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

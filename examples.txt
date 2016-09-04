@@ -2,7 +2,7 @@ Hello World
 Valeurs
 Variables
 Constantes
-Declarations courtes
+Déclarations courtes
 For
 If/Else
 Switch
@@ -14,53 +14,53 @@ Fonctions
 Valeurs de retour multiples
 Fonctions variadiques
 Closures
-Recursivite
+Récursivité
 Pointeurs
-Structuress
-Methodes
+Structures
+Méthodes
 Interfaces
-Errors
+Erreurs
 Goroutines
-Channels
-Channel Buffering
-Channel Synchronization
-Channel Directions
+Canaux
+Canaux avec buffer
+Synchronisation des canaux
+Direction des canaux
 Select
 Timeouts
-Non-Blocking Channel Operations
-Closing Channels
-Range over Channels
+Opérations non-bloquantes sur les canaux
+Fermer des canaux
+Range sur des canaux
 Timers
 Tickers
 Worker Pools
-Rate Limiting
-Atomic Counters
+Limitation de débit
+Compteurs atomiques
 Mutexes
-Stateful Goroutines
-Sorting
-Sorting by Functions
+Goroutines à états
+Tri
+Tri par des fonctions
 Panic
 Defer
-Collection Functions
-String Functions
-String Formatting
-Regular Expressions
+Fonctions sur les collections
+Fonctions sur les chaines
+Formattage de chaines
+Expressions régulières
 JSON
-Time
-Epoch
-Time Formatting / Parsing
-Random Numbers
-Number Parsing
-URL Parsing
-SHA1 Hashes
-Base64 Encoding
-Reading Files
-Writing Files
-Line Filters
-Command-Line Arguments
-Command-Line Flags
-Environment Variables
-Spawning Processes
-Exec'ing Processes
-Signals
-Exit
+Dates
+Temps UNIX
+Formattage et analyse de dates
+Nombres aléatoires
+Extraction de nombres
+Analyse d'URL
+Empreinte SHA1
+Encodage Base64
+Lire des fichiers
+Ecrire dans des fichiers
+Filtres de lignes
+Arguments de ligne de commande
+Options de ligne de commande
+Variables d'environnement
+Lancer des processus
+Exécuter des processus
+Signaux
+Sortie

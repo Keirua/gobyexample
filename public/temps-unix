@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Temps UNIX</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="temps-unix">
+      <h2><a href="./">Le Go par l'exemple</a>: Temps UNIX</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Un besoin courant des programmes, c&rsquo;est d&rsquo;obtenir le nombre de secondes, millisecondes ou nanosecondes depuis l&rsquo;<a href="https://fr.wikipedia.org/wiki/Heure_Unix">heure Unix</a>
+A common requirement in programs is getting the number
+of seconds, milliseconds, or nanoseconds since the
+<a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a>.
+Voici comment le faire en Go.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/ot3hsDBoAy"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On utilise <code>time.Now</code> avec <code>Unix</code> ou <code>UnixNano</code> pour obtenir le temps écoulé depuis l&rsquo;heure Unix en secondes ou en nanosecondes.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">now</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+    <span class="nx">secs</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()</span>
+    <span class="nx">nanos</span> <span class="o">:=</span> <span class="nx">now</span><span class="p">.</span><span class="nx">UnixNano</span><span class="p">()</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">now</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>A noter qu&rsquo;il n&rsquo;y a pas de <code>UnixMillis</code>, donc pour obtenir des millisecondes il faut faire la division soit même à partir des nanosecondes.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">millis</span> <span class="o">:=</span> <span class="nx">nanos</span> <span class="o">/</span> <span class="mi">1000000</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">secs</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">millis</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">nanos</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On peut aussi convertir des secondes ou des nanosecondes depuis l&rsquo;heure Unix.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nx">secs</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">nanos</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run epoch.go 
+<span class="go">2012-10-31 16:13:58.292387 +0000 UTC</span>
+<span class="go">1351700038</span>
+<span class="go">1351700038292</span>
+<span class="go">1351700038292387000</span>
+<span class="go">2012-10-31 16:13:58 +0000 UTC</span>
+<span class="go">2012-10-31 16:13:58.292387 +0000 UTC</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ensuite, nous verrons une autre tâche liée au temps :
+parser et formatter des dates.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="formattage-et-analyse-de-temps">Formattage et analyse de temps</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>
