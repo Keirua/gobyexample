@@ -29,7 +29,10 @@ $ tools/build-loop
 
 ### License
 
-Le travail est la propriété de Mark McGranaghan, publié sous license 
+Cette traduction est la propriété de Clément Camin, publié sous license 
+[Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
+
+Le travail original est la propriété de Mark McGranaghan, publié sous license 
 [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/).
 
 Go Gopher est la propriété de [Renée French](http://reneefrench.blogspot.com/) publié sous licence
