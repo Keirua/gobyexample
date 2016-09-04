@@ -2,33 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Mutexes</title>
+    <title>Le Go par l'exemple</a>: Mutexes</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="mutexes">
-      <h2><a href="./">Go by Example</a>: Mutexes</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Mutexes</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In the previous example we saw how to manage simple
-counter state using atomic operations. For more complex
-state we can use a <em><a href="http://en.wikipedia.org/wiki/Mutual_exclusion">mutex</a></em>
-to safely access data across multiple goroutines.</p>
+            <p>Dans l&rsquo;exemple précédent nous avons vu comment gérer des compteurs d&rsquo;état simples avec des opérations atomiques. Pour des états plus compliqués, on peut utiliser un _<a href="http://en.wikipedia.org/wiki/Mutual_exclusion">mutex</a>_ pour accéder de  manière sûre à des données à travers plusieurs goroutines.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +27,7 @@ to safely access data across multiple goroutines.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/-_LKNceBru"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/jOQv4V73VN"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -82,7 +67,7 @@ to safely access data across multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example the <code>state</code> will be a map.</p>
+            <p>Pour notre exemple, l&rsquo;état <code>state</code> sera une map.</p>
 
           </td>
           <td class="code leading">
@@ -95,7 +80,7 @@ to safely access data across multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>This <code>mutex</code> will synchronize access to <code>state</code>.</p>
+            <p>Ce <code>mutex</code> va synchroniser l&rsquo;accès à <code>state</code>.</p>
 
           </td>
           <td class="code leading">
@@ -108,9 +93,7 @@ to safely access data across multiple goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>To compare the mutex-based approach with another
-we&rsquo;ll see later, <code>ops</code> will count how many
-operations we perform against the state.</p>
+            <p>Pour comparer l&rsquo;approche avec des mutexes avec une autre que nous verrons plus tard, <code>ops</code> va compter combien d&rsquo;opérations nous réalisons avec l&rsquo;état.</p>
 
           </td>
           <td class="code leading">
@@ -123,8 +106,7 @@ operations we perform against the state.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we start 100 goroutines to execute repeated
-reads against the state.</p>
+            <p>Ici on lance 100 goroutines pour exécuter des lectures répétées sur l&rsquo;état.</p>
 
           </td>
           <td class="code leading">
@@ -140,12 +122,13 @@ reads against the state.</p>
         
         <tr>
           <td class="docs">
-            <p>For each read we pick a key to access,
-<code>Lock()</code> the <code>mutex</code> to ensure
-exclusive access to the <code>state</code>, read
-the value at the chosen key,
-<code>Unlock()</code> the mutex, and increment
-the <code>ops</code> count.</p>
+            <p>A chaque lecture, on sélectionne une
+clé à laquelle on souhaite accéder,
+on bloque le mutex avec <code>Lock()</code> pour
+s&rsquo;assurer un accès exclusif à l&rsquo;état,
+on lit la valeur de la clé choisie, on
+débloque le mutex, puis on incrémente
+le compteur.</p>
 
           </td>
           <td class="code leading">
@@ -162,14 +145,16 @@ the <code>ops</code> count.</p>
         
         <tr>
           <td class="docs">
-            <p>In order to ensure that this goroutine
-doesn&rsquo;t starve the scheduler, we explicitly
-yield after each operation with
-<code>runtime.Gosched()</code>. This yielding is
-handled automatically with e.g. every
-channel operation and for blocking
-calls like <code>time.Sleep</code>, but in this
-case we need to do it manually.</p>
+            <p>Pour nous assurer que cette goroutine
+ne prend pas toutes les ressources, on
+rend la main explicitement après
+chaque opération avec
+<code>runtime.Gosched()</code>. Le programmateur
+gère normalement automatiquement ceci,
+par ex. après les opérations sur les
+canaux et pour les appels bloquants
+comme <code>time.Sleep</code>, mais dans ce cas
+on doit le faire manuellement.</p>
 
           </td>
           <td class="code leading">
@@ -185,8 +170,9 @@ case we need to do it manually.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll also start 10 goroutines to simulate writes,
-using the same pattern we did for reads.</p>
+            <p>On démarre également 10 goroutines pour simuler
+des écritures, de la même manière que pour les
+écritures.</p>
 
           </td>
           <td class="code leading">
@@ -211,8 +197,8 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Let the 10 goroutines work on the <code>state</code> and
-<code>mutex</code> for a second.</p>
+            <p>On fait travailler les 10 goroutines sur les
+<code>state</code> et <code>mutex</code> pendant une seconde.</p>
 
           </td>
           <td class="code leading">
@@ -225,7 +211,8 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Take and report a final operations count.</p>
+            <p>On rapporte le nombre total d&rsquo;opérations
+réalisées.</p>
 
           </td>
           <td class="code leading">
@@ -239,7 +226,8 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>With a final lock of <code>state</code>, show how it ended up.</p>
+            <p>Avec un verrou final sur le mutex de <code>state</code>, on peut
+connaitre l&rsquo;état final.</p>
 
           </td>
           <td class="code">
@@ -259,9 +247,9 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Running the program shows that we executed about
-3,500,000 operations against our <code>mutex</code>-synchronized
-<code>state</code>.</p>
+            <p>Lancer  le programme montre qu&rsquo;on a exécuté environ
+3,500,000 d&rsquo;opérations sur <code>state</code>, synchronisées par un
+<code>mutex</code></p>
 
           </td>
           <td class="code leading">
@@ -276,8 +264,9 @@ using the same pattern we did for reads.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at implementing this same state
-management task using only goroutines and channels.</p>
+            <p>Ensuite nous verrons comment implémenter la même
+gestion d&rsquo;état avec uniquement des goroutines et
+des canaux.</p>
 
           </td>
           <td class="code empty">
@@ -290,11 +279,11 @@ management task using only goroutines and channels.</p>
       
       
       <p class="next">
-        Next example: <a href="stateful-goroutines">Stateful Goroutines</a>.
+        Exemple suivant: <a href="goroutines-à-états">Goroutines à états</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/mutexes">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

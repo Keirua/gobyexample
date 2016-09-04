@@ -2,32 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Tickers</title>
+    <title>Le Go par l'exemple</a>: Tickers</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="tickers">
-      <h2><a href="./">Go by Example</a>: Tickers</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Tickers</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><a href="timers">Timers</a> are for when you want to do
-something once in the future - <em>tickers</em> are for when
-you want to do something repeatedly at regular
+            <p>Les <a href="timers">timers</a> servent quand on veut faire
+quelquechose dans le futur. Les <em>tickers</em> servent à
+faire quelquechose de manière répétée à intervalles
+réguliers. Voici un exemple d&rsquo;un ticker qui se répète
+jusqu&rsquo;à ce qu&rsquo;on l&rsquo;arrête.
 intervals. Here&rsquo;s an example of a ticker that ticks
 periodically until we stop it.</p>
 
@@ -43,7 +33,7 @@ periodically until we stop it.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/MO3ndiv5qR"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/48293ZUzPC"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -77,10 +67,11 @@ periodically until we stop it.</p>
         
         <tr>
           <td class="docs">
-            <p>Tickers use a similar mechanism to timers: a
-channel that is sent values. Here we&rsquo;ll use the
-<code>range</code> builtin on the channel to iterate over
-the values as they arrive every 500ms.</p>
+            <p>Les tickers utilisent un mécanisme similaire à
+celui des timers : un canal pour envoyer des
+valeurs. Ici, nous utilisons la builtin <code>range</code>
+sur le canal pour itérer sur les valeurs
+lorsqu&rsquo;elles arrivent, toutes les 500ms.</p>
 
           </td>
           <td class="code leading">
@@ -98,9 +89,10 @@ the values as they arrive every 500ms.</p>
         
         <tr>
           <td class="docs">
-            <p>Tickers can be stopped like timers. Once a ticker
-is stopped it won&rsquo;t receive any more values on its
-channel. We&rsquo;ll stop ours after 1600ms.</p>
+            <p>Les tickers peuvent être arrêtés comme les timers.
+Lorsqu&rsquo;un ticker est arrêté, il ne recevra plus de
+valeurs sur son canal. Nous arrêterons le notre
+après 1600ms.</p>
 
           </td>
           <td class="code">
@@ -120,8 +112,8 @@ channel. We&rsquo;ll stop ours after 1600ms.</p>
         
         <tr>
           <td class="docs">
-            <p>When we run this program the ticker should tick 3 times
-before we stop it.</p>
+            <p>Quand on lance ce programme, le ticker devrait
+envoyer 3 notifications avant qu&rsquo;on ne l&rsquo;arrête.</p>
 
           </td>
           <td class="code">
@@ -140,11 +132,11 @@ before we stop it.</p>
       
       
       <p class="next">
-        Next example: <a href="worker-pools">Worker Pools</a>.
+        Exemple suivant: <a href="worker-pools">Worker Pools</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/tickers">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

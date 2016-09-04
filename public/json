@@ -2,32 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: JSON</title>
+    <title>Le Go par l'exemple</a>: JSON</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="json">
-      <h2><a href="./">Go by Example</a>: JSON</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: JSON</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go offers built-in support for JSON encoding and
-decoding, including to and from built-in and custom
-data types.</p>
+            <p>Go fournit un support pour l&rsquo;encodage et le décodage en JSON, à la fois pour les types intégrés mais aussi pour les types sur mesure.</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +27,7 @@ data types.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/WxRgpycMaH"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/7KECMVA92q"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -64,8 +50,7 @@ data types.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use these two structs to demonstrate encoding and
-decoding of custom types below.</p>
+            <p>Nous allons utiliser ces deux structures pour démontrer l&rsquo;encodage et le décodage vers des types de données custom plus bas.</p>
 
           </td>
           <td class="code leading">
@@ -97,9 +82,7 @@ decoding of custom types below.</p>
         
         <tr>
           <td class="docs">
-            <p>First we&rsquo;ll look at encoding basic data types to
-JSON strings. Here are some examples for atomic
-values.</p>
+            <p>Nous allons commencer par encoder des types de données de base vers une chaîne JSON. Voici quelques exemples pour des valeurs atomiques.</p>
 
           </td>
           <td class="code leading">
@@ -152,8 +135,7 @@ values.</p>
         
         <tr>
           <td class="docs">
-            <p>And here are some for slices and maps, which encode
-to JSON arrays and objects as you&rsquo;d expect.</p>
+            <p>Et voici quelques exemples pour les slices et les maps, qui encodent vers des tableaux et objets JSON comme attendu.</p>
 
           </td>
           <td class="code leading">
@@ -182,10 +164,8 @@ to JSON arrays and objects as you&rsquo;d expect.</p>
         
         <tr>
           <td class="docs">
-            <p>The JSON package can automatically encode your
-custom data types. It will only include exported
-fields in the encoded output and will by default
-use those names as the JSON keys.</p>
+            <p>Le package JSON peut automatiquement encoder vos types de données custom.
+Il incluera seulement les champs exportés dans la sortie encodée et utilisera par défaut ces noms comme clés JSON.</p>
 
           </td>
           <td class="code leading">
@@ -202,10 +182,7 @@ use those names as the JSON keys.</p>
         
         <tr>
           <td class="docs">
-            <p>You can use tags on struct field declarations
-to customize the encoded JSON key names. Check the
-definition of <code>Response2</code> above to see an example
-of such tags.</p>
+            <p>Vous pouvez utiliser des tags sur les déclarations de champs de structures pour personnaliser l&rsquo;encodage des noms de clé JSON. Regardez le définition de <code>Response2</code> au-dessus pour voir un exemple de tels tags.</p>
 
           </td>
           <td class="code leading">
@@ -222,9 +199,7 @@ of such tags.</p>
         
         <tr>
           <td class="docs">
-            <p>Now let&rsquo;s look at decoding JSON data into Go
-values. Here&rsquo;s an example for a generic data
-structure.</p>
+            <p>Maintenant regardons le décodage des données JSON vers des valeurs. Voici un exemple pour une structure de donnée générique.</p>
 
           </td>
           <td class="code leading">
@@ -237,10 +212,7 @@ structure.</p>
         
         <tr>
           <td class="docs">
-            <p>We need to provide a variable where the JSON
-package can put the decoded data. This
-<code>map[string]interface{}</code> will hold a map of strings
-to arbitrary data types.</p>
+            <p>Nous devons fournir une variable dans laquelle le package JSON peut décoder les données. Cette <code>map[string]interface{}</code> contiendra une map avec chaînes comme clé et comme valeur des types arbitraires.</p>
 
           </td>
           <td class="code leading">
@@ -253,8 +225,7 @@ to arbitrary data types.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the actual decoding, and a check for
-associated errors.</p>
+            <p>Voici le décodage, accompagné d&rsquo;un test d&rsquo;erreurs</p>
 
           </td>
           <td class="code leading">
@@ -270,10 +241,7 @@ associated errors.</p>
         
         <tr>
           <td class="docs">
-            <p>In order to use the values in the decoded map,
-we&rsquo;ll need to cast them to their appropriate type.
-For example here we cast the value in <code>num</code> to
-the expected <code>float64</code> type.</p>
+            <p>Pour utiliser les données dans la map décodée, nous devons les convertir dans le type approprié. Par exemple ici, on convertir <code>num</code> en <code>float64</code>.</p>
 
           </td>
           <td class="code leading">
@@ -287,8 +255,7 @@ the expected <code>float64</code> type.</p>
         
         <tr>
           <td class="docs">
-            <p>Accessing nested data requires a series of
-casts.</p>
+            <p>Accéder aux données imbriquées nécessite une série de casts.</p>
 
           </td>
           <td class="code leading">
@@ -303,11 +270,7 @@ casts.</p>
         
         <tr>
           <td class="docs">
-            <p>We can also decode JSON into custom data types.
-This has the advantages of adding additional
-type-safety to our programs and eliminating the
-need for type assertions when accessing the decoded
-data.</p>
+            <p>Nous pouvons aussi décoder du JSON dans des types de données custom. Ceci a également l&rsquo;avantage d&rsquo;assurer une sécurité au niveau des types de données, et d&rsquo;éliminer le besoin de vérifier les types lorsqu&rsquo;on accède aux données décodées.</p>
 
           </td>
           <td class="code leading">
@@ -324,11 +287,7 @@ data.</p>
         
         <tr>
           <td class="docs">
-            <p>In the examples above we always used bytes and
-strings as intermediates between the data and
-JSON representation on standard out. We can also
-stream JSON encodings directly to <code>os.Writer</code>s like
-<code>os.Stdout</code> or even HTTP response bodies.</p>
+            <p>Dans les exemples ci-dessus, nous avons toujours utilisé des octets et des chaînes comme données intermédiaires entre les données et leur représentation JSON sur la sortie standard. On peut également streamer l&rsquo;encodage directement dans un <code>os.Writer</code> comme <code>os.Stdout</code>, ou même dans le corps d&rsquo;une réponse HTTP.</p>
 
           </td>
           <td class="code">
@@ -374,10 +333,7 @@ stream JSON encodings directly to <code>os.Writer</code>s like
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ve covered the basic of JSON in Go here, but check
-out the <a href="http://blog.golang.org/2011/01/json-and-go.html">JSON and Go</a>
-blog post and <a href="http://golang.org/pkg/encoding/json/">JSON package docs</a>
-for more.</p>
+            <p>Nous avons couvert les bases du JSON en Go ici, mais regardez l&rsquo;article sur <a href="http://blog.golang.org/2011/01/json-and-go.html">JSON et le Go</a> et la documentation <a href="http://golang.org/pkg/encoding/json/">du package JSON</a> pour en savoir plus.</p>
 
           </td>
           <td class="code empty">
@@ -390,11 +346,11 @@ for more.</p>
       
       
       <p class="next">
-        Next example: <a href="time">Time</a>.
+        Exemple suivant: <a href="dates">Dates</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/json">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

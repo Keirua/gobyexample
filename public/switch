@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Switch</title>
+    <title>Le Go par l'exemple</a>: Switch</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="switch">
-      <h2><a href="./">Go by Example</a>: Switch</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Switch</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Switch statements</em> express conditionals across many
-branches.</p>
+            <p>Les expressions _Switch réalisent des conditions
+à travers plusieurs branches</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@ branches.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/8b5CajPcHn"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/-R3-6VpWOy"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,7 +62,7 @@ branches.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s a basic <code>switch</code>.</p>
+            <p>Voici un <code>switch</code> basique.</p>
 
           </td>
           <td class="code leading">
@@ -96,9 +84,10 @@ branches.</p>
         
         <tr>
           <td class="docs">
-            <p>You can use commas to separate multiple expressions
-in the same <code>case</code> statement. We use the optional
-<code>default</code> case in this example as well.</p>
+            <p>On peut utiliser des virugules pour séparer
+plusieurs expressions dans un même <code>case</code>. Nous
+utilisons également le cas <code>default</code> optionnel
+dans cet exemple.</p>
 
           </td>
           <td class="code leading">
@@ -116,12 +105,13 @@ in the same <code>case</code> statement. We use the optional
         
         <tr>
           <td class="docs">
-            <p><code>switch</code> without an expression is an alternate way
-to express if/else logic. Here we also show how the
-<code>case</code> expressions can be non-constants.</p>
+            <p><code>switch</code> sans expression est une autre manière de
+faire un if/else. Vous pouvez aussi voir que les
+expressions dans <code>case</code> peuvent être
+non-constantes.</p>
 
           </td>
-          <td class="code">
+          <td class="code leading">
 	        
             <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
     <span class="k">switch</span> <span class="p">{</span>
@@ -130,6 +120,31 @@ to express if/else logic. Here we also show how the
     <span class="k">default</span><span class="p">:</span>
         <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s after noon&quot;</span><span class="p">)</span>
     <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Un switch sur les types <code>switch</code> compare des types et non des valeurs. Vous pouvez utiliser cela pour découvrir le type correspondant à la valeur d&rsquo;une interface. Dans cet exemple, la variable <code>t</code> aura comme valeur le type de la variable i.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">whatAmI</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="nx">t</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;I am a bool&quot;</span>
+        <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;I am an int&quot;</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Can&#39;t handle type %T&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">(</span><span class="s">&quot;hey&quot;</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -150,6 +165,9 @@ to express if/else logic. Here we also show how the
 <span class="go">write 2 as two</span>
 <span class="go">it&#39;s the weekend</span>
 <span class="go">it&#39;s before noon</span>
+<span class="go">I am an int</span>
+<span class="go">I am a bool</span>
+<span class="go">Can&#39;t handle type string</span>
 </pre></div>
 
           </td>
@@ -159,11 +177,11 @@ to express if/else logic. Here we also show how the
       
       
       <p class="next">
-        Next example: <a href="arrays">Arrays</a>.
+        Exemple suivant: <a href="tableaux">Tableaux</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/switch">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

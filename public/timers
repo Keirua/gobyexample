@@ -2,34 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Timers</title>
+    <title>Le Go par l'exemple</a>: Timers</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="timers">
-      <h2><a href="./">Go by Example</a>: Timers</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Timers</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>We often want to execute Go code at some point in the
-future, or repeatedly at some interval. Go&rsquo;s built-in
-<em>timer</em> and <em>ticker</em> features make both of these tasks
-easy. We&rsquo;ll look first at timers and then
-at <a href="tickers">tickers</a>.</p>
+            <p>On veut souvent exécuter du code Go à un certain
+point du futur, ou de manière répétée selon un
+intervalle de temps. Les fonctionnalités builtin
+<em>timer</em> et <em>ticker</em> rendent ces deux tâches faciles.
+Nous allons d&rsquo;abord regarder les timers, et ensuite
+les <a href="tickers">tickers</a>.</p>
 
           </td>
           <td class="code empty leading">
@@ -43,7 +32,7 @@ at <a href="tickers">tickers</a>.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/6fSHrYxpMu"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/PRIsWYL4KF"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -77,10 +66,10 @@ at <a href="tickers">tickers</a>.</p>
         
         <tr>
           <td class="docs">
-            <p>Timers represent a single event in the future. You
-tell the timer how long you want to wait, and it
-provides a channel that will be notified at that
-time. This timer will wait 2 seconds.</p>
+            <p>Les timers représente un événement unique dans le
+futur. On précise combien de temps on veut
+attendre, et il founit un canal qui sera notifié
+à ce moment là. Ce timer attendra 2 secondes.</p>
 
           </td>
           <td class="code leading">
@@ -93,9 +82,9 @@ time. This timer will wait 2 seconds.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>&lt;-timer1.C</code> blocks on the timer&rsquo;s channel <code>C</code>
-until it sends a value indicating that the timer
-expired.</p>
+            <p>Le <code>&lt;-timer1.C</code> bloque sur le canal <code>C</code> du timer
+jusqu&rsquo;à ce qu&rsquo;il envoie une valeur indiquant que
+le timer a expiré.</p>
 
           </td>
           <td class="code leading">
@@ -109,10 +98,10 @@ expired.</p>
         
         <tr>
           <td class="docs">
-            <p>If you just wanted to wait, you could have used
-<code>time.Sleep</code>. One reason a timer may be useful is
-that you can cancel the timer before it expires.
-Here&rsquo;s an example of that.</p>
+            <p>Pour simplement attendre, on peut utiliser
+<code>time.Sleep</code>. Mais les timers peuvent être utiles
+car on peut les stopper avant qu&rsquo;ils expirent.
+Voici un exemple de ceci.</p>
 
           </td>
           <td class="code">
@@ -138,9 +127,9 @@ Here&rsquo;s an example of that.</p>
         
         <tr>
           <td class="docs">
-            <p>The first timer will expire ~2s after we start the
-program, but the second should be stopped before it has
-a chance to expire.</p>
+            <p>Le premier timer va expirer ~2s après que l&rsquo;on démarre
+le programme, mais le second devrait être stoppé avant
+qu&rsquo;il ait pu expirer.</p>
 
           </td>
           <td class="code">
@@ -157,11 +146,11 @@ a chance to expire.</p>
       
       
       <p class="next">
-        Next example: <a href="tickers">Tickers</a>.
+        Exemple suivant: <a href="tickers">Tickers</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/timers">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

@@ -2,33 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Closures</title>
+    <title>Le Go par l'exemple</a>: Closures</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="closures">
-      <h2><a href="./">Go by Example</a>: Closures</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Closures</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go supports <a href="http://en.wikipedia.org/wiki/Anonymous_function"><em>anonymous functions</em></a>,
-which can form <a href="http://en.wikipedia.org/wiki/Closure_(computer_science)"><em>closures</em></a>.
-Anonymous functions are useful when you want to define
-a function inline without having to name it.</p>
+            <p>Go support les <a href="https://fr.wikipedia.org/wiki/Fonction_anonyme"><em>fonctions anonymes</em></a>,
+qui peuvent former une <a href="https://fr.wikipedia.org/wiki/Fermeture_(informatique)">closure</a> (fermeture ou clotûre en français.)
+Les fonctions anonymes sont utiles lorsque l&rsquo;on veut
+définir des fonctions à la volée, sans avoir à les
+ nommer.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +31,7 @@ a function inline without having to name it.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/gQtEWkhWyp"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/m75cfLBQwk"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -63,10 +52,10 @@ a function inline without having to name it.</p>
         
         <tr>
           <td class="docs">
-            <p>This function <code>intSeq</code> returns another function, which
-we define anonymously in the body of <code>intSeq</code>. The
-returned function <em>closes over</em> the variable <code>i</code> to
-form a closure.</p>
+            <p>Cette fonction <code>intSeq</code> renvoie une autre fonction,
+qui est définie anonymement dans le corps de <code>intSeq</code>.
+La fonction retournée <em>embarque</em> la variable <code>i</code> pour
+former une closure.</p>
 
           </td>
           <td class="code leading">
@@ -97,10 +86,10 @@ form a closure.</p>
         
         <tr>
           <td class="docs">
-            <p>We call <code>intSeq</code>, assigning the result (a function)
-to <code>nextInt</code>. This function value captures its
-own <code>i</code> value, which will be updated each time
-we call <code>nextInt</code>.</p>
+            <p>On appelle <code>intSeq</code>, et assigne le résultat (une
+function) à <code>nextInt</code>. Cette fonction capture sa
+propre valeur de <code>i</code>, qui sera mise à jour à
+chaque fois que l&rsquo;on appelle <code>nextInt</code>.</p>
 
           </td>
           <td class="code leading">
@@ -113,8 +102,8 @@ we call <code>nextInt</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>See the effect of the closure by calling <code>nextInt</code>
-a few times.</p>
+            <p>Voyez l&rsquo;effet de la closure en appellant <code>nextInt</code>
+plusieurs fois.</p>
 
           </td>
           <td class="code leading">
@@ -129,8 +118,9 @@ a few times.</p>
         
         <tr>
           <td class="docs">
-            <p>To confirm that the state is unique to that
-particular function, create and test a new one.</p>
+            <p>Pour confirmer que l&rsquo;état est unique à cette
+fonction particulière, créez et testez en une
+nouvelle.</p>
 
           </td>
           <td class="code">
@@ -165,8 +155,8 @@ particular function, create and test a new one.</p>
         
         <tr>
           <td class="docs">
-            <p>The last feature of functions we&rsquo;ll look at for now is
-recursion.</p>
+            <p>La dernière fonctionnalité des fonctions que nous
+allons regarder pour le moment, c&rsquo;est la récursivité.</p>
 
           </td>
           <td class="code empty">
@@ -179,11 +169,11 @@ recursion.</p>
       
       
       <p class="next">
-        Next example: <a href="recursion">Recursion</a>.
+        Exemple suivant: <a href="récursivité">Récursivité</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/closures">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

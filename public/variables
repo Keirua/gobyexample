@@ -2,32 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Variables</title>
+    <title>Le Go par l'exemple</a>: Variables</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="variables">
-      <h2><a href="./">Go by Example</a>: Variables</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Variables</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In Go, <em>variables</em> are explicitly declared and used by
-the compiler to e.g. check type-correctness of function
-calls.</p>
+            <p>En Go, les <em>variables</em> sont déclarées explicitement et
+utilisées par le compilateur, par exemple pour vérifier
+que le type de retour des appels de fonction
+est correct</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +30,7 @@ calls.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Zv45CSMaiD"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/uzLDy55z-d"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -74,7 +63,7 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p><code>var</code> declares 1 or more variables.</p>
+            <p><code>var</code> déclare une ou plusieurs varaibles.</p>
 
           </td>
           <td class="code leading">
@@ -88,7 +77,7 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>You can declare multiple variables at once.</p>
+            <p>On peut déclarer plusieurs variables à la  fois</p>
 
           </td>
           <td class="code leading">
@@ -102,7 +91,7 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>Go will infer the type of initialized variables.</p>
+            <p>Go déduira le type des variables non initialisées</p>
 
           </td>
           <td class="code leading">
@@ -116,9 +105,9 @@ calls.</p>
         
         <tr>
           <td class="docs">
-            <p>Variables declared without a corresponding
-initialization are <em>zero-valued</em>. For example, the
-zero value for an <code>int</code> is <code>0</code>.</p>
+            <p>Les variables déclarées sans être initialisées ont
+une <em>valeur nulle</em>. Par exemple, la valeur nulle
+d&rsquo;un <code>int</code> est <code>0</code>.</p>
 
           </td>
           <td class="code leading">
@@ -132,9 +121,9 @@ zero value for an <code>int</code> is <code>0</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>The <code>:=</code> syntax is shorthand for declaring and
-initializing a variable, e.g. for
-<code>var f string = &quot;short&quot;</code> in this case.</p>
+            <p>La syntaxe <code>:=</code> est un raccourci pour déclarer et
+initialiser une variable, par exemple pour
+<code>var f string = &quot;short&quot;</code> ici.</p>
 
           </td>
           <td class="code">
@@ -172,11 +161,11 @@ initializing a variable, e.g. for
       
       
       <p class="next">
-        Next example: <a href="constants">Constants</a>.
+        Exemple suivant: <a href="constantes">Constantes</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/variables">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

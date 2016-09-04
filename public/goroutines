@@ -2,30 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Goroutines</title>
+    <title>Le Go par l'exemple</a>: Goroutines</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="goroutines">
-      <h2><a href="./">Go by Example</a>: Goroutines</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Goroutines</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>A <em>goroutine</em> is a lightweight thread of execution.</p>
+            <p>Une <em>goroutine</em> est un thread d&rsquo;exécution léger.</p>
 
           </td>
           <td class="code empty leading">
@@ -39,7 +27,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/RW_RSAHfj-"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/ZJnC1ZCpS6"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -88,9 +76,9 @@
         
         <tr>
           <td class="docs">
-            <p>Suppose we have a function call <code>f(s)</code>. Here&rsquo;s how
-we&rsquo;d call that in the usual way, running it
-synchronously.</p>
+            <p>Suppons que l&rsquo;on ait un appel de fonction <code>f(s)</code>.
+Normalement, on l&rsquo;appellerait comme ceci, et son
+execution serait synchrone.</p>
 
           </td>
           <td class="code leading">
@@ -103,9 +91,9 @@ synchronously.</p>
         
         <tr>
           <td class="docs">
-            <p>To invoke this function in a goroutine, use
-<code>go f(s)</code>. This new goroutine will execute
-concurrently with the calling one.</p>
+            <p>Pour appeler la fonction dans une goroutine, on
+utilise <code>go f(s)</code>. Cette nouvelle goroutine va
+s&rsquo;exécuter de manière concurrent avec l&rsquo;appellée.</p>
 
           </td>
           <td class="code leading">
@@ -118,8 +106,8 @@ concurrently with the calling one.</p>
         
         <tr>
           <td class="docs">
-            <p>You can also start a goroutine for an anonymous
-function call.</p>
+            <p>On peut aussi démarrer une goroutine pour un appel
+de fonction anonyme.</p>
 
           </td>
           <td class="code leading">
@@ -134,10 +122,10 @@ function call.</p>
         
         <tr>
           <td class="docs">
-            <p>Our two function calls are running asynchronously in
-separate goroutines now, so execution falls through
-to here. This <code>Scanln</code> code requires we press a key
-before the program exits.</p>
+            <p>Nous deux appels de fonction s&rsquo;éxécutent de manière
+asynchrone dans des goroutines séparées, donc
+l&rsquo;exécution tombe ici. Ce <code>Scanln</code> demande que
+l&rsquo;on presse une touche pour sortir du programme.</p>
 
           </td>
           <td class="code">
@@ -157,10 +145,11 @@ before the program exits.</p>
         
         <tr>
           <td class="docs">
-            <p>When we run this program, we see the output of the
-blocking call first, then the interleaved output of the
-two gouroutines. This interleaving reflects the
-goroutines being run concurrently by the Go runtime.</p>
+            <p>Lorsque l&rsquo;on lance ce programme, on voit la sortie
+de la fonction bloquante en premier, puis les
+exécutions croisées des deux goroutines.
+Cet entrelacement reflète le fait que les deux
+goroutines sont exécutées de manière concurrente.</p>
 
           </td>
           <td class="code leading">
@@ -182,8 +171,8 @@ goroutines being run concurrently by the Go runtime.</p>
         
         <tr>
           <td class="docs">
-            <p>Next we&rsquo;ll look at a complement to goroutines in
-concurrent Go programs: channels.</p>
+            <p>Ensuite nous allons regarder un complément aux
+goroutines : les channels</p>
 
           </td>
           <td class="code empty">
@@ -196,11 +185,11 @@ concurrent Go programs: channels.</p>
       
       
       <p class="next">
-        Next example: <a href="channels">Channels</a>.
+        Exemple suivant: <a href="canaux">Canaux</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/goroutines">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

@@ -2,31 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Worker Pools</title>
+    <title>Le Go par l'exemple</a>: Worker Pools</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="worker-pools">
-      <h2><a href="./">Go by Example</a>: Worker Pools</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Worker Pools</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>In this example we&rsquo;ll look at how to implement
-a <em>worker pool</em> using goroutines and channels.</p>
+            <p>Dans cet exemple, nous allons regarder comment implémenter un worker poole en utilisant des goroutines et des canaus.</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +27,7 @@ a <em>worker pool</em> using goroutines and channels.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/y12QxBsKtT"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/cjsE4-Uzpf"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,11 +49,7 @@ a <em>worker pool</em> using goroutines and channels.</p>
         
         <tr>
           <td class="docs">
-            <p>Here&rsquo;s the worker, of which we&rsquo;ll run several
-concurrent instances. These workers will receive
-work on the <code>jobs</code> channel and send the corresponding
-results on <code>results</code>. We&rsquo;ll sleep a second per job to
-simulate an expensive task.</p>
+            <p>Voici notre worker, dont nous allons lancer plusieurs instances concurrentes. Ces workers recevront du travail dans le canal <code>jobs</code> et enverront le résultat correspondant dans <code>results</code>. Nous ferons une pause d&rsquo;une seconde par tâche pour simuler une opération complexe.</p>
 
           </td>
           <td class="code leading">
@@ -97,9 +80,7 @@ simulate an expensive task.</p>
         
         <tr>
           <td class="docs">
-            <p>In order to use our pool of workers we need to send
-them work and collect their results. We make 2
-channels for this.</p>
+            <p>Afin d&rsquo;utiliser notre pool de workers, nous devons leur envoyer du travail et collecter leurs résultats. On crée deux canaux pour celà.</p>
 
           </td>
           <td class="code leading">
@@ -113,8 +94,7 @@ channels for this.</p>
         
         <tr>
           <td class="docs">
-            <p>This starts up 3 workers, initially blocked
-because there are no jobs yet.</p>
+            <p>On démarre 3 workers, initiallement bloqués car ils n&rsquo;ont pas de travaux pour le moment.</p>
 
           </td>
           <td class="code leading">
@@ -129,8 +109,7 @@ because there are no jobs yet.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we send 9 <code>jobs</code> and then <code>close</code> that
-channel to indicate that&rsquo;s all the work we have.</p>
+            <p>Ici on envoit 9 travaux, puis ferme ce canal pour indiquer que c&rsquo;est tout le travail que nous avons.</p>
 
           </td>
           <td class="code leading">
@@ -146,7 +125,7 @@ channel to indicate that&rsquo;s all the work we have.</p>
         
         <tr>
           <td class="docs">
-            <p>Finally we collect all the results of the work.</p>
+            <p>Finalement, nous collectons les résultats du travail.</p>
 
           </td>
           <td class="code">
@@ -166,10 +145,12 @@ channel to indicate that&rsquo;s all the work we have.</p>
         
         <tr>
           <td class="docs">
-            <p>Our running program shows the 9 jobs being executed by
-various workers. The program only takes about 3 seconds
-despite doing about 9 seconds of total work because
-there are 3 workers operating concurrently.</p>
+            <p>Notre programme montre, au cours de son exécution, les
+9 jobs qui s&rsquo;exécutent, traités par les différents
+workers. Le programme prend seulement environ 3
+secondes à s&rsquo;exécuter, bien qu&rsquo;il traite environ 9
+secondes de travail car il y a 3 workers qui
+travaillent de manière concurrente.</p>
 
           </td>
           <td class="code leading">
@@ -205,11 +186,11 @@ there are 3 workers operating concurrently.</p>
       
       
       <p class="next">
-        Next example: <a href="rate-limiting">Rate Limiting</a>.
+        Exemple suivant: <a href="limitation-de-débit">Limitation de débit</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/worker-pools">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

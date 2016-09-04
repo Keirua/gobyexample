@@ -2,32 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Select</title>
+    <title>Le Go par l'exemple</a>: Select</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="select">
-      <h2><a href="./">Go by Example</a>: Select</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Select</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p>Go&rsquo;s <em>select</em> lets you wait on multiple channel
-operations. Combining goroutines and channels with
-select is a powerful feature of Go.</p>
+            <p>Le <em>select</em> de go permet d&rsquo;attendre plusieurs
+opérations sur les canaux. Combiner les goroutines et
+les canaux est une fonctionnalité puissante de Go.</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +29,7 @@ select is a powerful feature of Go.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/Vco7d8Lmhn"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/YJdcsu1igT"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -63,7 +51,9 @@ select is a powerful feature of Go.</p>
         
         <tr>
           <td class="docs">
-            
+            <p>Pour notre exemple, nous ferons des select à
+travers deux canaux.</p>
+
           </td>
           <td class="code leading">
 	        
@@ -75,8 +65,7 @@ select is a powerful feature of Go.</p>
         
         <tr>
           <td class="docs">
-            <p>For our example we&rsquo;ll select across two channels.</p>
-
+            
           </td>
           <td class="code leading">
 	        
@@ -89,9 +78,10 @@ select is a powerful feature of Go.</p>
         
         <tr>
           <td class="docs">
-            <p>Each channel will receive a value after some amount
-of time, to simulate e.g. blocking RPC operations
-executing in concurrent goroutines.</p>
+            <p>Chaque canal va recevoir une valeur après un
+certain temps, pour simuler une opération
+bloquante (par ex. un appel RPC) qui s&rsquo;exécute
+dans une goroutine concurrente.</p>
 
           </td>
           <td class="code leading">
@@ -111,8 +101,7 @@ executing in concurrent goroutines.</p>
         
         <tr>
           <td class="docs">
-            <p>We&rsquo;ll use <code>select</code> to await both of these values
-simultaneously, printing each one as it arrives.</p>
+            <p>Nous utilisons <code>select</code> pour attendre ces deux valeurs simultanément, en affichant chacune d&rsquo;elle dès qu&rsquo;elle arrive.</p>
 
           </td>
           <td class="code">
@@ -137,8 +126,8 @@ simultaneously, printing each one as it arrives.</p>
         
         <tr>
           <td class="docs">
-            <p>We receive the values <code>&quot;one&quot;</code> and then <code>&quot;two&quot;</code> as
-expected.</p>
+            <p>Nous recevons les valeurs <code>&quot;one&quot;</code> puis <code>&quot;two&quot;</code>
+comme attendu.</p>
 
           </td>
           <td class="code leading">
@@ -153,9 +142,9 @@ expected.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that the total execution time is only ~2 seconds
-since both the 1 and 2 second <code>Sleeps</code> execute
-concurrently.</p>
+            <p>A noter que le temps total d&rsquo;exécution est seulement
+de ~2 secondes, car les deux <code>Sleeps</code> s&rsquo;exécutent de
+manière concurrente.</p>
 
           </td>
           <td class="code">
@@ -170,11 +159,11 @@ concurrently.</p>
       
       
       <p class="next">
-        Next example: <a href="timeouts">Timeouts</a>.
+        Exemple suivant: <a href="timeouts">Timeouts</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/select">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

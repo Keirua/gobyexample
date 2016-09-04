@@ -2,32 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Range</title>
+    <title>Le Go par l'exemple</a>: Range</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="range">
-      <h2><a href="./">Go by Example</a>: Range</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Range</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>range</em> iterates over elements in a variety of data
-structures. Let&rsquo;s see how to use <code>range</code> with some
-of the data structures we&rsquo;ve already learned.</p>
+            <p><em>range</em> itère sur les éléments de différents types de
+structures de données. Voyons comment utiliser <code>range</code>
+avec certaines des structures de données que nous
+avons déjà rencontré.</p>
 
           </td>
           <td class="code empty leading">
@@ -41,7 +30,7 @@ of the data structures we&rsquo;ve already learned.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/g9DqcAkPVA"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/_4VtB390BI"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -62,7 +51,10 @@ of the data structures we&rsquo;ve already learned.</p>
         
         <tr>
           <td class="docs">
-            
+            <p>Ici on utilise <code>range</code> pour additionner les
+nombres d&rsquo;une slice.
+Cela fonctionne de la même manière avec un array.</p>
+
           </td>
           <td class="code leading">
 	        
@@ -74,9 +66,7 @@ of the data structures we&rsquo;ve already learned.</p>
         
         <tr>
           <td class="docs">
-            <p>Here we use <code>range</code> to sum the numbers in a slice.
-Arrays work like this too.</p>
-
+            
           </td>
           <td class="code leading">
 	        
@@ -93,11 +83,11 @@ Arrays work like this too.</p>
         
         <tr>
           <td class="docs">
-            <p><code>range</code> on arrays and slices provides both the
-index and value for each entry. Above we didn&rsquo;t
-need the index, so we ignored it with the
-blank identifier <code>_</code>. Sometimes we actually want
-the indexes though.</p>
+            <p><code>range</code> sur les array et les slices fournit à la
+fois la clé et la valeur pour chaque entrée.
+Au dessus, nous n&rsquo;avons pas besoin de la clé, donc
+nous l&rsquo;avions ignoré avec l&rsquo;identifieur blanc <code>_</code>.
+On a cependant parfois besoin de le récupérer.</p>
 
           </td>
           <td class="code leading">
@@ -114,7 +104,8 @@ the indexes though.</p>
         
         <tr>
           <td class="docs">
-            <p><code>range</code> on map iterates over key/value pairs.</p>
+            <p><code>range</code> sur une map itère sur les paires
+clé/valeur.</p>
 
           </td>
           <td class="code leading">
@@ -130,9 +121,10 @@ the indexes though.</p>
         
         <tr>
           <td class="docs">
-            <p><code>range</code> on strings iterates over Unicode code
-points. The first value is the starting byte index
-of the <code>rune</code> and the second the <code>rune</code> itself.</p>
+            <p><code>range</code> sur une chaine itère sur les points de
+code <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a>.
+La première valeur est l&rsquo;index de l&rsquo;octet de
+départ de la <code>rune</code>, et le second la rune elle-même.</p>
 
           </td>
           <td class="code">
@@ -172,11 +164,11 @@ of the <code>rune</code> and the second the <code>rune</code> itself.</p>
       
       
       <p class="next">
-        Next example: <a href="functions">Functions</a>.
+        Exemple suivant: <a href="fonctions">Fonctions</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/range">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

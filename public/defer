@@ -2,33 +2,23 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Defer</title>
+    <title>Le Go par l'exemple</a>: Defer</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="defer">
-      <h2><a href="./">Go by Example</a>: Defer</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Defer</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Defer</em> is used to ensure that a function call is
-performed later in a program&rsquo;s execution, usually for
-purposes of cleanup. <code>defer</code> is often used where e.g.
-<code>ensure</code> and <code>finally</code> would be used in other languages.</p>
+            <p><em>Defer</em> est utilisé pour s&rsquo;assurer qu&rsquo;un appel de
+fonction est réalisé en dernier à la fin de
+l&rsquo;exécution d&rsquo;un programme, en général pour libérer
+les ressources.
+On utilise souvent <code>defer</code> là où on aurait utilisé
+<code>ensure</code> et <code>finally</code> dans d&rsquo;autres langages.</p>
 
           </td>
           <td class="code empty leading">
@@ -42,7 +32,7 @@ purposes of cleanup. <code>defer</code> is often used where e.g.
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/9aoHwzHcAo"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/QqITDK8Gge"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -64,9 +54,9 @@ purposes of cleanup. <code>defer</code> is often used where e.g.
         
         <tr>
           <td class="docs">
-            <p>Suppose we wanted to create a file, write to it,
-and then close when we&rsquo;re done. Here&rsquo;s how we could
-do that with <code>defer</code>.</p>
+            <p>Supposons que nous voulions créer un fichier, écrire
+dedans et le fermer quand on a terminé. Voici comment
+nous pourrions faire celà avec <code>defer</code>.</p>
 
           </td>
           <td class="code leading">
@@ -79,11 +69,12 @@ do that with <code>defer</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Immediately after getting a file object with
-<code>createFile</code>, we defer the closing of that file
-with <code>closeFile</code>. This will be executed at the end
-of the enclosing function (<code>main</code>), after
-<code>writeFile</code> has finished.</p>
+            <p>Immédiatement après avoir obtenu un objet fichier
+avec <code>createFile</code>, on repousse la fermetture de ce
+fichier avec <code>closeFile</code>. Cette fonction sera
+exécutée à la fin de la fonction où se trouve
+l&rsquo;appel (ici, <code>main</code>), c&rsquo;est à dire après que
+<code>writeFile</code> ait terminé.</p>
 
           </td>
           <td class="code leading">
@@ -163,8 +154,8 @@ of the enclosing function (<code>main</code>), after
         
         <tr>
           <td class="docs">
-            <p>Running the program confirms that the file is closed
-after being written.</p>
+            <p>Exécuter le programme confirme que le fichier est fermé
+après avoir été écrit.</p>
 
           </td>
           <td class="code">
@@ -182,11 +173,11 @@ after being written.</p>
       
       
       <p class="next">
-        Next example: <a href="collection-functions">Collection Functions</a>.
+        Exemple suivant: <a href="fonctions-sur-les-collections">Fonctions sur les collections</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/defer">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

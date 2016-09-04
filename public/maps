@@ -2,31 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Maps</title>
+    <title>Le Go par l'exemple</a>: Maps</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="maps">
-      <h2><a href="./">Go by Example</a>: Maps</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Maps</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Maps</em> are Go&rsquo;s built-in <a href="http://en.wikipedia.org/wiki/Associative_array">associative data type</a>
-(sometimes called <em>hashes</em> or <em>dicts</em> in other languages).</p>
+            <p>Les <em>maps</em> sont un type <a href="http://en.wikipedia.org/wiki/Associative_array">type de donnée associatif</a>
+(parfois appelé <em>hashes</em> ou <em>dicts</em> dans d&rsquo;autres langages).</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +28,7 @@
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/E6cGoiKqka"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/XAxd-s0_ki"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -73,8 +61,8 @@
         
         <tr>
           <td class="docs">
-            <p>To create an empty map, use the builtin <code>make</code>:
-<code>make(map[key-type]val-type)</code>.</p>
+            <p>Pour créer une map vide, on utilise la builtin
+ <code>make</code>: <code>make(map[key-type]val-type)</code>.</p>
 
           </td>
           <td class="code leading">
@@ -87,8 +75,8 @@
         
         <tr>
           <td class="docs">
-            <p>Set key/value pairs using typical <code>name[key] = val</code>
-syntax.</p>
+            <p>On affecte les paires clé/valeur avec la syntaxe
+<code>name[key] = val</code></p>
 
           </td>
           <td class="code leading">
@@ -102,8 +90,8 @@ syntax.</p>
         
         <tr>
           <td class="docs">
-            <p>Printing a map with e.g. <code>Println</code> will show all of
-its key/value pairs.</p>
+            <p>Afficher une map via <code>Println</code> affichera toutes
+les paires clé/valeur</p>
 
           </td>
           <td class="code leading">
@@ -116,7 +104,7 @@ its key/value pairs.</p>
         
         <tr>
           <td class="docs">
-            <p>Get a value for a key with <code>name[key]</code>.</p>
+            <p>On récupère une valeur avec <code>name[key]</code>.</p>
 
           </td>
           <td class="code leading">
@@ -130,8 +118,8 @@ its key/value pairs.</p>
         
         <tr>
           <td class="docs">
-            <p>The builtin <code>len</code> returns the number of key/value
-pairs when called on a map.</p>
+            <p>La builtin <code>len</code> renvoie le nombre de paires
+clé/valeur lorsqu&rsquo;on l&rsquo;appelle sur une map</p>
 
           </td>
           <td class="code leading">
@@ -144,8 +132,8 @@ pairs when called on a map.</p>
         
         <tr>
           <td class="docs">
-            <p>The builtin <code>delete</code> removes key/value pairs from
-a map.</p>
+            <p>La builtin <code>delete</code> supprime d&rsquo;une map
+une paire clé/valeur</p>
 
           </td>
           <td class="code leading">
@@ -159,13 +147,14 @@ a map.</p>
         
         <tr>
           <td class="docs">
-            <p>The optional second return value when getting a
-value from a map indicates if the key was present
-in the map. This can be used to disambiguate
-between missing keys and keys with zero values
-like <code>0</code> or <code>&quot;&quot;</code>. Here we didn&rsquo;t need the value
-itself, so we ignored it with the <em>blank identifier</em>
-<code>_</code>.</p>
+            <p>La seconde valeur de retour optionnelle lorsque
+l&rsquo;on récupère une valeur dans une map indique si
+la clé était présente. Cela peut être utilisé pour
+lever l&rsquo;ambiguité entre des clés manquantes et des
+clés de valeur nulle, comme <code>0</code> ou <code>&quot;&quot;</code>.
+Ici, nous n&rsquo;avions pas besoin de la valeur en
+elle-même, donc nous l&rsquo;avions ignorée avec
+l&rsquo;<em>identifieur vide</em> <code>_</code>.</p>
 
           </td>
           <td class="code leading">
@@ -179,8 +168,8 @@ itself, so we ignored it with the <em>blank identifier</em>
         
         <tr>
           <td class="docs">
-            <p>You can also declare and initialize a new map in
-the same line with this syntax.</p>
+            <p>On peut aussi déclarer et initialiser une nouvelle
+maps sur la même ligne avec cette syntaxe.</p>
 
           </td>
           <td class="code">
@@ -199,13 +188,24 @@ the same line with this syntax.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that maps appear in the form <code>map[k:v k:v]</code> when
-printed with <code>fmt.Println</code>.</p>
+            <p>A noter ques les maps apparaissent sous la forme
+<code>map[k:v k:v]</code> lorsqu&rsquo;on les affiche avec
+<code>fmt.Println</code></p>
 
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
           </td>
           <td class="code">
 	        
-            <div class="highlight"><pre><span class="gp">$</span> go run maps.go 
+            <div class="highlight"><pre><span class="gp">$</span> go run maps.go
 <span class="go">map: map[k1:7 k2:13]</span>
 <span class="go">v1:  7</span>
 <span class="go">len: 2</span>
@@ -221,11 +221,11 @@ printed with <code>fmt.Println</code>.</p>
       
       
       <p class="next">
-        Next example: <a href="range">Range</a>.
+        Exemple suivant: <a href="range">Range</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/maps">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

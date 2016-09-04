@@ -2,31 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example: Slices</title>
+    <title>Le Go par l'exemple</a>: Slices</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div class="example" id="slices">
-      <h2><a href="./">Go by Example</a>: Slices</h2>
+      <h2><a href="./">Le Go par l'exemple</a>: Slices</h2>
       
       <table>
         
         <tr>
           <td class="docs">
-            <p><em>Slices</em> are a key data type in Go, giving a more
-powerful interface to sequences than arrays.</p>
+            <p>Les <em>slices</em> sont un type de donnée clé en Go.
+Ils sont bien plus puissant que les array pour
+manipuler les séquences de données</p>
 
           </td>
           <td class="code empty leading">
@@ -40,7 +29,7 @@ powerful interface to sequences than arrays.</p>
             
           </td>
           <td class="code leading">
-	        <a href="http://play.golang.org/p/dPQErsP6Yc"><img title="Run code" src="play.png" class="run" /></a>
+	        <a href="http://play.golang.org/p/6Ap-BGlNxu"><img title="Exécuter le code" src="play.png" class="run" /></a>
             <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
 </pre></div>
 
@@ -61,7 +50,15 @@ powerful interface to sequences than arrays.</p>
         
         <tr>
           <td class="docs">
-            
+            <p>Contrairement aux array, les slices sont typées
+uniquement par les éléments qu&rsquo;elles contiennent
+(pas par le nombre d&rsquo;éléments). Pour créer une
+slice vide de longueur non nulle, on utilise la
+builtin <code>make</code>. Ici, on crée une slice de
+<code>string</code>s
+de longueur <code>3</code> (initiallement de valeurs
+nulles).</p>
+
           </td>
           <td class="code leading">
 	        
@@ -73,12 +70,7 @@ powerful interface to sequences than arrays.</p>
         
         <tr>
           <td class="docs">
-            <p>Unlike arrays, slices are typed only by the
-elements they contain (not the number of elements).
-To create an empty slice with non-zero length, use
-the builtin <code>make</code>. Here we make a slice of
-<code>string</code>s of length <code>3</code> (initially zero-valued).</p>
-
+            
           </td>
           <td class="code leading">
 	        
@@ -91,7 +83,8 @@ the builtin <code>make</code>. Here we make a slice of
         
         <tr>
           <td class="docs">
-            <p>We can set and get just like with arrays.</p>
+            <p>On peut affecter et retrouver les valeurs comme
+avec les array</p>
 
           </td>
           <td class="code leading">
@@ -108,7 +101,8 @@ the builtin <code>make</code>. Here we make a slice of
         
         <tr>
           <td class="docs">
-            <p><code>len</code> returns the length of the slice as expected.</p>
+            <p><code>len</code> renvoie la longueur de la slice comme
+prévu.</p>
 
           </td>
           <td class="code leading">
@@ -121,12 +115,15 @@ the builtin <code>make</code>. Here we make a slice of
         
         <tr>
           <td class="docs">
-            <p>In addition to these basic operations, slices
-support several more that make them richer than
-arrays. One is the builtin <code>append</code>, which
-returns a slice containing one or more new values.
-Note that we need to accept a return value from
-append as we may get a new slice value.</p>
+            <p>En plus de ces opérations basiques, les slices en
+supportent plusieurs qui les rendent plus riches
+que les array. L&rsquo;une d&rsquo;elle est la builtin
+<code>append</code>, qui renvoie une slice avec une ou
+plusieurs nouvelles valeurs. A noter que la
+ nouvelle slice est renvoyée par append : la
+slice
+ originale, passée en paramètres, n&rsquo;est pas
+modifiée.</p>
 
           </td>
           <td class="code leading">
@@ -141,9 +138,10 @@ append as we may get a new slice value.</p>
         
         <tr>
           <td class="docs">
-            <p>Slices can also be <code>copy</code>&rsquo;d. Here we create an
-empty slice <code>c</code> of the same length as <code>s</code> and copy
-into <code>c</code> from <code>s</code>.</p>
+            <p>On peut également également copier les slices.
+Ici, on crée une slice <code>c</code> vide, de la même
+longueur que <code>s</code> et on copie les valeurs de <code>s</code>
+dans <code>c</code></p>
 
           </td>
           <td class="code leading">
@@ -158,9 +156,11 @@ into <code>c</code> from <code>s</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Slices support a &ldquo;slice&rdquo; operator with the syntax
-<code>slice[low:high]</code>. For example, this gets a slice
-of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
+            <p>Les slices possède un opérateur &ldquo;slice&rdquo; avec la
+syntaxe <code>slice[debut:fin]</code>. Par exemple,
+l&rsquo;exemple
+suivant crée une slice avec les éléments <code>s[2]</code>,
+<code>s[3]</code>, et <code>s[4]</code>.</p>
 
           </td>
           <td class="code leading">
@@ -174,7 +174,7 @@ of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>This slices up to (but excluding) <code>s[5]</code>.</p>
+            <p>Ceci crée une slice jusqu&rsquo;à (mais sans) <code>s[5]</code>.</p>
 
           </td>
           <td class="code leading">
@@ -188,7 +188,8 @@ of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>And this slices up from (and including) <code>s[2]</code>.</p>
+            <p>Et ceci crée une slice à partir de (et incluant)
+<code>s[2]</code>.</p>
 
           </td>
           <td class="code leading">
@@ -202,8 +203,9 @@ of the elements <code>s[2]</code>, <code>s[3]</code>, and <code>s[4]</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>We can declare and initialize a variable for slice
-in a single line as well.</p>
+            <p>On peut déclarer et initialiser une varibale pour
+une slice en une ligne également. A la différence
+des array, on ne précise pas la longueur dans [].</p>
 
           </td>
           <td class="code leading">
@@ -217,9 +219,11 @@ in a single line as well.</p>
         
         <tr>
           <td class="docs">
-            <p>Slices can be composed into multi-dimensional data
-structures. The length of the inner slices can
-vary, unlike with multi-dimensional arrays.</p>
+            <p>Les slices peuvent être composées en structures
+de
+données multidimensionnelles. La longueur des
+slices internes peut varier, contrairement aux
+tableaux multidimensionnels.</p>
 
           </td>
           <td class="code">
@@ -245,8 +249,9 @@ vary, unlike with multi-dimensional arrays.</p>
         
         <tr>
           <td class="docs">
-            <p>Note that while slices are different types than arrays,
-they are rendered similarly by <code>fmt.Println</code>.</p>
+            <p>A noter que, bien que les slices soient un type
+différent des array, elles s&rsquo;affichent de la même
+manière avec <code>fmt.Println</code>.</p>
 
           </td>
           <td class="code leading">
@@ -270,9 +275,9 @@ they are rendered similarly by <code>fmt.Println</code>.</p>
         
         <tr>
           <td class="docs">
-            <p>Check out this <a href="http://blog.golang.org/2011/01/go-slices-usage-and-internals.html">great blog post</a>
-by the Go team for more details on the design and
-implementation of slices in Go.</p>
+            <p>Vous pouvez lire ce <a href="http://blog.golang.org/2011/01/go-slices-usage-and-internals.html">bon article</a>
+de l&rsquo;équipe Go pour plus de détails sur le design et
+l&rsquo;implémentation des slices en Go.</p>
 
           </td>
           <td class="code empty leading">
@@ -283,8 +288,9 @@ implementation of slices in Go.</p>
         
         <tr>
           <td class="docs">
-            <p>Now that we&rsquo;ve seen arrays and slices we&rsquo;ll look at
-Go&rsquo;s other key builtin data structure: maps.</p>
+            <p>Maintenant que nous avons vu les arrays et les slices,
+nous allons regarder une autre structure de donnée
+clé : les maps</p>
 
           </td>
           <td class="code empty">
@@ -297,11 +303,11 @@ Go&rsquo;s other key builtin data structure: maps.</p>
       
       
       <p class="next">
-        Next example: <a href="maps">Maps</a>.
+        Exemple suivant: <a href="maps">Maps</a>.
       </p>
       
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample/blob/master/examples/slices">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>

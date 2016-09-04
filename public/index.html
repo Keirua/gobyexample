@@ -2,46 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Go by Example</title>
+    <title>Le Go par l'exemple</title>
     <link rel=stylesheet href="site.css">
   </head>
-  <script type="text/javascript">
-    if (window.location.host == "gobyexample.com") {
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-34996217-1']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    }
-  </script>
   <body>
     <div id="intro">
-      <h2><a href="./">Go by Example</a></h2>
+      <h2><a href="./">Le Go par l'exemple</a></h2>
       <p>
-        <a href="http://golang.org">Go</a> is an
-        open source programming language designed for
-        building simple, fast, and reliable software.
+        <a href="http://golang.org">Go</a> est langage de programmation open-source conçu pour permettre de réaliser des programmes simples, rapides et fiables.
       </p>
 
       <p>
-        <em>Go by Example</em> is a hands-on introduction
-        to Go using annotated example programs. Check out
-        the <a href="hello-world">first example</a> or
-        browse the full list below.
+        <em>Le Go par l'exemple</em> est une introduction pratique au Go avec des programmes d'exemple annotés. Regardez le <a href="hello-world">premier exemple</a> ou naviguez dans la liste complète ci-dessous.
       </p>
 
       <ul>
       
         <li><a href="hello-world">Hello World</a></li>
       
-        <li><a href="values">Values</a></li>
+        <li><a href="valeurs">Valeurs</a></li>
       
         <li><a href="variables">Variables</a></li>
       
-        <li><a href="constants">Constants</a></li>
+        <li><a href="constantes">Constantes</a></li>
+      
+        <li><a href="déclarations-courtes">Déclarations courtes</a></li>
       
         <li><a href="for">For</a></li>
       
@@ -49,7 +34,7 @@
       
         <li><a href="switch">Switch</a></li>
       
-        <li><a href="arrays">Arrays</a></li>
+        <li><a href="tableaux">Tableaux</a></li>
       
         <li><a href="slices">Slices</a></li>
       
@@ -57,45 +42,45 @@
       
         <li><a href="range">Range</a></li>
       
-        <li><a href="functions">Functions</a></li>
+        <li><a href="fonctions">Fonctions</a></li>
       
-        <li><a href="multiple-return-values">Multiple Return Values</a></li>
+        <li><a href="valeurs-de-retour-multiples">Valeurs de retour multiples</a></li>
       
-        <li><a href="variadic-functions">Variadic Functions</a></li>
+        <li><a href="fonctions-variadiques">Fonctions variadiques</a></li>
       
         <li><a href="closures">Closures</a></li>
       
-        <li><a href="recursion">Recursion</a></li>
+        <li><a href="récursivité">Récursivité</a></li>
       
-        <li><a href="pointers">Pointers</a></li>
+        <li><a href="pointeurs">Pointeurs</a></li>
       
-        <li><a href="structs">Structs</a></li>
+        <li><a href="structures">Structures</a></li>
       
-        <li><a href="methods">Methods</a></li>
+        <li><a href="méthodes">Méthodes</a></li>
       
         <li><a href="interfaces">Interfaces</a></li>
       
-        <li><a href="errors">Errors</a></li>
+        <li><a href="erreurs">Erreurs</a></li>
       
         <li><a href="goroutines">Goroutines</a></li>
       
-        <li><a href="channels">Channels</a></li>
+        <li><a href="canaux">Canaux</a></li>
       
-        <li><a href="channel-buffering">Channel Buffering</a></li>
+        <li><a href="canaux-avec-buffer">Canaux avec buffer</a></li>
       
-        <li><a href="channel-synchronization">Channel Synchronization</a></li>
+        <li><a href="synchronisation-des-canaux">Synchronisation des canaux</a></li>
       
-        <li><a href="channel-directions">Channel Directions</a></li>
+        <li><a href="direction-des-canaux">Direction des canaux</a></li>
       
         <li><a href="select">Select</a></li>
       
         <li><a href="timeouts">Timeouts</a></li>
       
-        <li><a href="non-blocking-channel-operations">Non-Blocking Channel Operations</a></li>
+        <li><a href="opérations-non-bloquantes-sur-les-canaux">Opérations non-bloquantes sur les canaux</a></li>
       
-        <li><a href="closing-channels">Closing Channels</a></li>
+        <li><a href="fermer-des-canaux">Fermer des canaux</a></li>
       
-        <li><a href="range-over-channels">Range over Channels</a></li>
+        <li><a href="range-sur-des-canaux">Range sur des canaux</a></li>
       
         <li><a href="timers">Timers</a></li>
       
@@ -103,71 +88,71 @@
       
         <li><a href="worker-pools">Worker Pools</a></li>
       
-        <li><a href="rate-limiting">Rate Limiting</a></li>
+        <li><a href="limitation-de-débit">Limitation de débit</a></li>
       
-        <li><a href="atomic-counters">Atomic Counters</a></li>
+        <li><a href="compteurs-atomiques">Compteurs atomiques</a></li>
       
         <li><a href="mutexes">Mutexes</a></li>
       
-        <li><a href="stateful-goroutines">Stateful Goroutines</a></li>
+        <li><a href="goroutines-à-états">Goroutines à états</a></li>
       
-        <li><a href="sorting">Sorting</a></li>
+        <li><a href="tri">Tri</a></li>
       
-        <li><a href="sorting-by-functions">Sorting by Functions</a></li>
+        <li><a href="tri-par-des-fonctions">Tri par des fonctions</a></li>
       
         <li><a href="panic">Panic</a></li>
       
         <li><a href="defer">Defer</a></li>
       
-        <li><a href="collection-functions">Collection Functions</a></li>
+        <li><a href="fonctions-sur-les-collections">Fonctions sur les collections</a></li>
       
-        <li><a href="string-functions">String Functions</a></li>
+        <li><a href="fonctions-sur-les-chaines">Fonctions sur les chaines</a></li>
       
-        <li><a href="string-formatting">String Formatting</a></li>
+        <li><a href="formattage-de-chaines">Formattage de chaines</a></li>
       
-        <li><a href="regular-expressions">Regular Expressions</a></li>
+        <li><a href="expressions-régulières">Expressions régulières</a></li>
       
         <li><a href="json">JSON</a></li>
       
-        <li><a href="time">Time</a></li>
+        <li><a href="dates">Dates</a></li>
       
-        <li><a href="epoch">Epoch</a></li>
+        <li><a href="temps-unix">Temps UNIX</a></li>
       
-        <li><a href="time-formatting-parsing">Time Formatting / Parsing</a></li>
+        <li><a href="formattage-et-analyse-de-dates">Formattage et analyse de dates</a></li>
       
-        <li><a href="random-numbers">Random Numbers</a></li>
+        <li><a href="nombres-aléatoires">Nombres aléatoires</a></li>
       
-        <li><a href="number-parsing">Number Parsing</a></li>
+        <li><a href="extraction-de-nombres">Extraction de nombres</a></li>
       
-        <li><a href="url-parsing">URL Parsing</a></li>
+        <li><a href="analyse-durl">Analyse d'URL</a></li>
       
-        <li><a href="sha1-hashes">SHA1 Hashes</a></li>
+        <li><a href="empreinte-sha1">Empreinte SHA1</a></li>
       
-        <li><a href="base64-encoding">Base64 Encoding</a></li>
+        <li><a href="encodage-base64">Encodage Base64</a></li>
       
-        <li><a href="reading-files">Reading Files</a></li>
+        <li><a href="lire-des-fichiers">Lire des fichiers</a></li>
       
-        <li><a href="writing-files">Writing Files</a></li>
+        <li><a href="ecrire-dans-des-fichiers">Ecrire dans des fichiers</a></li>
       
-        <li><a href="line-filters">Line Filters</a></li>
+        <li><a href="filtres-de-lignes">Filtres de lignes</a></li>
       
-        <li><a href="command-line-arguments">Command-Line Arguments</a></li>
+        <li><a href="arguments-de-ligne-de-commande">Arguments de ligne de commande</a></li>
       
-        <li><a href="command-line-flags">Command-Line Flags</a></li>
+        <li><a href="options-de-ligne-de-commande">Options de ligne de commande</a></li>
       
-        <li><a href="environment-variables">Environment Variables</a></li>
+        <li><a href="variables-denvironnement">Variables d'environnement</a></li>
       
-        <li><a href="spawning-processes">Spawning Processes</a></li>
+        <li><a href="lancer-des-processus">Lancer des processus</a></li>
       
-        <li><a href="execing-processes">Exec'ing Processes</a></li>
+        <li><a href="exécuter-des-processus">Exécuter des processus</a></li>
       
-        <li><a href="signals">Signals</a></li>
+        <li><a href="signaux">Signaux</a></li>
       
-        <li><a href="exit">Exit</a></li>
+        <li><a href="sortie">Sortie</a></li>
       
       </ul>
       <p class="footer">
-        by <a href="https://twitter.com/mmcgrana">@mmcgrana</a> | <a href="mailto:mmcgrana@gmail.com">feedback</a> | <a href="https://github.com/mmcgrana/gobyexample">source</a> | <a href="https://github.com/mmcgrana/gobyexample#license">license</a>
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
       </p>
     </div>
   </body>
