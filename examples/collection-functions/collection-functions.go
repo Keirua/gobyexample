@@ -12,7 +12,7 @@
 // spécialement pour un type donné, si et lorsque c'est
 // spécifiquement nécessaire pour le programme.
 
-// Voici quelques exemples de fonctions sur les 
+// Voici quelques exemples de fonctions sur les
 // collections pour des slices de `strings`. Vous pouvez
 // utiliser ces exemples pour concevoir vos propres
 // fonctions. A noter que dans certains cas, il peut être

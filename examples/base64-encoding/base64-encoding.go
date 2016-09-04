@@ -23,7 +23,7 @@ func main() {
     fmt.Println(sEnc)
 
     // Le décodage peut renvoyer une erreur, que l'on
-    // peut  vérifier si vous ne savez pas déjà si 
+    // peut  vérifier si vous ne savez pas déjà si
     // l'entrée est correctement formée.
     sDec, _ := b64.StdEncoding.DecodeString(sEnc)
     fmt.Println(string(sDec))
