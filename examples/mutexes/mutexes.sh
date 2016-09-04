@@ -1,5 +1,5 @@
-# Exécuter le programme montre qu'on a exécuté environ
-# 3,500,000 d'opérations sur `state`, synchronisé par un
+# Lancer  le programme montre qu'on a exécuté environ
+# 3,500,000 d'opérations sur `state`, synchronisées par un
 # `mutex`
 $ go run mutexes.go
 ops: 3598302

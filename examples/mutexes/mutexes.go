@@ -82,7 +82,7 @@ func main() {
     opsFinal := atomic.LoadInt64(&ops)
     fmt.Println("ops:", opsFinal)
 
-    // Avec un bloquage final de `state`, on peut
+    // Avec un verrou final sur le mutex de `state`, on peut
     // connaitre l'état final.
     mutex.Lock()
     fmt.Println("state:", state)

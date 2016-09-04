@@ -1,23 +1,23 @@
 Hello World
-Values
+Valeurs
 Variables
-Constants
-Shorthand notation
+Constantes
+Declarations courtes
 For
 If/Else
 Switch
-Arrays
+Tableaux
 Slices
 Maps
 Range
-Functions
-Multiple Return Values
-Variadic Functions
+Fonctions
+Valeurs de retour multiples
+Fonctions variadiques
 Closures
-Recursion
-Pointers
-Structs
-Methods
+Recursivite
+Pointeurs
+Structuress
+Methodes
 Interfaces
 Errors
 Goroutines
