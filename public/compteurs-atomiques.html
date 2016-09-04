@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Compteurs atomiques</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="compteurs-atomiques">
+      <h2><a href="./">Le Go par l'exemple</a>: Compteurs atomiques</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Le mécanisme principal pour gérer les états en Go,
+c&rsquo;est la communication à travers les canaux. Nous
+avons vu ceci par exemple avec les <a href="worker-pools">worker pools</a>.
+Il y a quelques autres options pour gérer les états
+ceci dit. Ici, nous allons utiliser le package
+<code>sync/atomic</code> pour des <em>compteurs atomiques</em> auxquels
+accèdent plusieurs goroutines.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/_rm6MiOsx5"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;sync/atomic&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;runtime&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Nous utiliserons un entier non-signé pour
+représenter notre compteur (toujours positif).</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">uint64</span> <span class="p">=</span> <span class="mi">0</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Pour simuler des mises à jour concurrentes, nous
+commençons 50 goroutines qui incrémentent le
+compteur environ une fois par milliseconde.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">50</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Pour incrémenter atomiquement le
+compteur, nous utilisons <code>AddUint64</code>,
+en luis donnant l&rsquo;adresse mémoire de
+notre compteur <code>ops</code> avec la syntaxe
+<code>&amp;</code>.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On fait continuer la goroutine.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>                <span class="nx">runtime</span><span class="p">.</span><span class="nx">Gosched</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On attend une seconde pour permettre aux
+goroutines de travailler, et au compteur de
+grandir en valeur.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Afin d&rsquo;utiliser le compteur de manière sûre alors
+qu&rsquo;il est toujours mis à jour par les autres
+goroutines, on extraie une copie de la valeur
+courante dans <code>opsFinal</code> via <code>LoadUint64</code>.
+Comme plus haut, nous devons donner à cette
+fonction l&rsquo;adresse mémoire <code>&amp;ops</code> depuis laquelle
+chercher la valeur.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadUint64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Lancer le programme montre qu&rsquo;environ 40,000 operations
+ont été exécutées.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run atomic-counters.go
+<span class="go">ops: 40200</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ensuite nous regarderons les mutexes, un autre outil
+pour gérer les états.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="mutexes.html">Mutexes</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

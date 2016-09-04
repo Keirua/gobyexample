@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Switch</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="switch">
+      <h2><a href="./">Le Go par l'exemple</a>: Switch</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Les expressions _Switch réalisent des conditions
+à travers plusieurs branches</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/-R3-6VpWOy"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Voici un <code>switch</code> basique.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">i</span> <span class="o">:=</span> <span class="mi">2</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;write &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; as &quot;</span><span class="p">)</span>
+    <span class="k">switch</span> <span class="nx">i</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;two&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;three&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On peut utiliser des virugules pour séparer
+plusieurs expressions dans un même <code>case</code>. Nous
+utilisons également le cas <code>default</code> optionnel
+dans cet exemple.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="k">switch</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Weekday</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Saturday</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Sunday</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s the weekend&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s a weekday&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>switch</code> sans expression est une autre manière de
+faire un if/else. Vous pouvez aussi voir que les
+expressions dans <code>case</code> peuvent être
+non-constantes.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+    <span class="k">switch</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s before noon&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s after noon&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Un switch sur les types <code>switch</code> compare des types et non des valeurs. Vous pouvez utiliser cela pour découvrir le type correspondant à la valeur d&rsquo;une interface. Dans cet exemple, la variable <code>t</code> aura comme valeur le type de la variable i.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">whatAmI</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kd">interface</span><span class="p">{})</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="nx">t</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="kt">bool</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;I am a bool&quot;</span>
+        <span class="k">case</span> <span class="kt">int</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">&quot;I am an int&quot;</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Can&#39;t handle type %T&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">whatAmI</span><span class="p">(</span><span class="s">&quot;hey&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run switch.go 
+<span class="go">write 2 as two</span>
+<span class="go">it&#39;s the weekend</span>
+<span class="go">it&#39;s before noon</span>
+<span class="go">I am an int</span>
+<span class="go">I am a bool</span>
+<span class="go">Can&#39;t handle type string</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="tableaux.html">Tableaux</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

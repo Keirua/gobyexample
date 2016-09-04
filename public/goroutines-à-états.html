@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Goroutines à états</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="goroutines-à-états">
+      <h2><a href="./">Le Go par l'exemple</a>: Goroutines à états</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Dans l&rsquo;exemple précédent, nous avons utilisé un verrou explicite avec des mutexes pour synchroniser l&rsquo;accès à l&rsquo;état partagé à travers plusieurs goroutines. Une autre option consiste à utiliser les fonctionnalités natives de synchronisation des goroutines pour obtenir le même résultat.
+Cette approche avec les canaux s&rsquo;aligne avec l&rsquo;idée du Go de partager la mémoire en communiquand et en ayant chaque morceau de donnée possédé par exactement une goroutine.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/VyHl5eBytJ"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;math/rand&quot;</span>
+    <span class="s">&quot;sync/atomic&quot;</span>
+    <span class="s">&quot;time&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Dans cet exemple, notre état sera possédé par une unique goroutine. Cela va garantir que la donnée n&rsquo;est jamais corrompue par des accès concurrents. Afin de lire ou écrire dans cet état, les autres goroutines vont envoyer des messages à la goroutine propriétaire et recevoir les réponses correspondantes. Ces structures <code>readOp</code> et <code>writeOp</code> encapsulent ces requêtes et une manière pour la goroutine propriétaire de répondre.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">type</span> <span class="nx">readOp</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">key</span>  <span class="kt">int</span>
+    <span class="nx">resp</span> <span class="kd">chan</span> <span class="kt">int</span>
+<span class="p">}</span>
+<span class="kd">type</span> <span class="nx">writeOp</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">key</span>  <span class="kt">int</span>
+    <span class="nx">val</span>  <span class="kt">int</span>
+    <span class="nx">resp</span> <span class="kd">chan</span> <span class="kt">bool</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Comme précédemment, nous allons compter combien d&rsquo;opérations on réalise.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">ops</span> <span class="kt">int64</span> <span class="p">=</span> <span class="mi">0</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Les canaux <code>reads</code> et <code>writes</code> seront utilisés par les autres goroutines pour envoyer des demande de lecture et d&rsquo;écriture.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">reads</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="o">*</span><span class="nx">readOp</span><span class="p">)</span>
+    <span class="nx">writes</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="o">*</span><span class="nx">writeOp</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Voici la goroutine qui possède l&rsquo;état <code>state</code>, qui est une map comme dans l&rsquo;exemple précédent, mais qui est privée grâce à la goroutine à état. Cette goroutine fait un select de manière répétée sur les canaux <code>reads</code> et <code>writes</code>, et répond aux requêtes à mesure qu&rsquo;elles arrivent. Une réponse est exécutée en réalisant tout d&rsquo;abord l&rsquo;opération demandée, puis en envoyant une valeur sur le canal de réponse <code>resp</code> pour indiquer la réussite (et la valeur désirée dans le cas d&rsquo;une lecture).</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">state</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">{</span>
+            <span class="k">select</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="nx">read</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">reads</span><span class="p">:</span>
+                <span class="nx">read</span><span class="p">.</span><span class="nx">resp</span> <span class="o">&lt;-</span> <span class="nx">state</span><span class="p">[</span><span class="nx">read</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span>
+            <span class="k">case</span> <span class="nx">write</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">writes</span><span class="p">:</span>
+                <span class="nx">state</span><span class="p">[</span><span class="nx">write</span><span class="p">.</span><span class="nx">key</span><span class="p">]</span> <span class="p">=</span> <span class="nx">write</span><span class="p">.</span><span class="nx">val</span>
+                <span class="nx">write</span><span class="p">.</span><span class="nx">resp</span> <span class="o">&lt;-</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On démarre 100 goroutines pour faire des lectures sur la goroutine à état, grâce au canal <code>reads</code>.
+Chaque lecture nécessite de construire un objet <code>readOp</code>, l&rsquo;envoyer à travers le canal<code>reads</code>, puis recevoir le résultat à travers le canal <code>resp</code> fourni.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">r</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">r</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="nx">r</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">{</span>
+                <span class="nx">read</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">readOp</span><span class="p">{</span>
+                    <span class="nx">key</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+                    <span class="nx">resp</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">int</span><span class="p">)}</span>
+                <span class="nx">reads</span> <span class="o">&lt;-</span> <span class="nx">read</span>
+                <span class="o">&lt;-</span><span class="nx">read</span><span class="p">.</span><span class="nx">resp</span>
+                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On démarre 10 écritures également, selon la même approche.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">w</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">w</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">w</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">{</span>
+                <span class="nx">write</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">writeOp</span><span class="p">{</span>
+                    <span class="nx">key</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+                    <span class="nx">val</span><span class="p">:</span>  <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+                    <span class="nx">resp</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">bool</span><span class="p">)}</span>
+                <span class="nx">writes</span> <span class="o">&lt;-</span> <span class="nx">write</span>
+                <span class="o">&lt;-</span><span class="nx">write</span><span class="p">.</span><span class="nx">resp</span>
+                <span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On laisse les goroutines travailler pendant une seconde.
+Let the goroutines work for a second.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Enfin, on capture et rapport le nombre d&rsquo;opération.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">opsFinal</span> <span class="o">:=</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">ops</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;ops:&quot;</span><span class="p">,</span> <span class="nx">opsFinal</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Lancer notre programme montre que la gestion d&rsquo;état par
+goroutines réalise environ 800,000 operations par
+secondes.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run stateful-goroutines.go
+<span class="go">ops: 807434</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Pour ce cas particulier, l&rsquo;approche avec les goroutines
+était un peu plus complexe qu&rsquo;avec les mutexes.
+Elle peut être utile dans certains cas néanmoins, par
+exemple lorsque vous avez d&rsquo;autres canaux impliqués ou
+quand la gestion de tels mutexes serait source
+d&rsquo;erreurs.
+Vous devriez utiliser l&rsquo;approche qui vous parait la
+plus naturelle, et qui vous permet d&rsquo;écrire le
+programme le plus juste possible.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="tri.html">Tri</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Range sur des canaux</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="range-sur-des-canaux">
+      <h2><a href="./">Le Go par l'exemple</a>: Range sur des canaux</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Dans un exemple <a href="range">précédent</a>, nous avons vu
+comment <code>for</code> et <code>range</code> permettent d&rsquo;itérer sur des
+structures de données simples.
+On peut également utiliser cette syntaxe pour itérer
+sur des valeurs reçues depuis un canal.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/0WYgyybNbk"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Nous allons itérer sur 2 valeurs dans le canal <code>queue</code>.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">queue</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
+    <span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
+    <span class="nb">close</span><span class="p">(</span><span class="nx">queue</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Ce <code>range</code> itère sur chaque élément à mesure
+qu&rsquo;il est reçu dans <code>queue</code>.
+Comme nous avons fermé le canal plus haut,
+l&rsquo;itération se termine après réception des deux
+éléments. Si nous ne l&rsquo;avions pas fermé, nous
+bloquerions sur la réception d&rsquo;une troisième
+valeur dans la boucle.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">elem</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">queue</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run range-over-channels.go
+<span class="go">one</span>
+<span class="go">two</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Cet exemple montrait également comment il est possible
+de fermer un canal non vide tout en continuant à
+recevoir les valeurs restantes.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="timers.html">Timers</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Canaux</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="canaux">
+      <h2><a href="./">Le Go par l'exemple</a>: Canaux</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Les <em>canaux</em> (channels) sont des tuyaux qui relient
+des goroutines concurrentes. On peut envoyer des
+valeurs d&rsquo;une goroutine à une autre via un canal</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/cVZhoBjPi2"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On crée un nouveau canal avec <code>make(chan val-type)</code>.
+Les canaux sont typés avec les valeurs qu&rsquo;ils
+transportent.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On <em>envoie</em> une valeur dans un canal avec la
+syntaxe <code>canal &lt;-</code>. Ici on envoie <code>&quot;ping&quot;</code>  dans
+le canal <code>messages</code> que l&rsquo;on a créé au dessus,
+depuis une nouvelle goroutine.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;ping&quot;</span> <span class="p">}()</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>La syntaxe<code>&lt;-canal</code> _recoit une valeur depuis un
+canal.
+Ici on affiche le message <code>&quot;ping&quot;</code> envoié au
+dessus, et l&rsquo;affiche.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Lorsque l&rsquo;on lance le programme, le message <code>&quot;ping&quot;</code>
+est correctement passé d&rsquo;une goroutine à l&rsquo;autre via
+notre canal.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run channels.go 
+<span class="go">ping</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Par défaut, l&rsquo;envoi et la réception de messages bloque
+jusqu&rsquo;à ce que l&rsquo;envoyeur et le receveur soient prêts.
+Cette propriété nous a permis d&rsquo;attendre le message
+<code>&quot;ping&quot;</code> à la fin de notre programme, sans utiliser
+une autre forme de synchronisation.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="canaux-avec-buffer.html">Canaux avec buffer</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

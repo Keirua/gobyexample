@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Filtres de lignes</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="filtres-de-lignes">
+      <h2><a href="./">Le Go par l'exemple</a>: Filtres de lignes</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Un <em>filtre de ligne</em> est un type de programme courant qui lit des entrées sur stdin, les traite, puis affiche un resultat dérivé sur stdout. <code>grep</code> et <code>sed</code> sont des exemples de filtres de ligne.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Voici un filtre de ligne en Go qui met en majuscule tout le texte d&rsquo;entrée. Vous pouvez utilisez ce modèle pour écrire vos filtres de lignes en Go.</p>
+
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/vUi1mh35g7"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&quot;bufio&quot;</span>
+    <span class="s">&quot;fmt&quot;</span>
+    <span class="s">&quot;os&quot;</span>
+    <span class="s">&quot;strings&quot;</span>
+<span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On encadre <code>os.Stdin</code> qui n&rsquo;a pas de buffer, avec un scanner qui en a un. Il nous fournit en outre une méthode pratique <code>Scan</code> qui avance la lecture jusqu&rsquo;à la marque suivant, c&rsquo;est à dire ici la ligne suivante dans le scanner par défaut.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nx">scanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p><code>Text</code> renvoie la zone de texte courante, ici une ligne du texte d&rsquo;entrée.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="k">for</span> <span class="nx">scanner</span><span class="p">.</span><span class="nx">Scan</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>        <span class="nx">ucl</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">(</span><span class="nx">scanner</span><span class="p">.</span><span class="nx">Text</span><span class="p">())</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On affiche la ligne en majuscules.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ucl</span><span class="p">)</span>
+    <span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>On teste les erreurs durant <code>Scan</code>. Un caractère de fin de fichier est attendu et si on en trouve pas, il est reporté par <code>Scan</code> comme une erreur.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">scanner</span><span class="p">.</span><span class="nx">Err</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintln</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&quot;error:&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Pour essayer notre filtre de ligne, commencez par créer
+un fichier avec quelques lignes en minuscule.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;hello&#39;</span>   &gt; /tmp/lines
+<span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;filter&#39;</span> &gt;&gt; /tmp/lines
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Puis utilisez le filtre de ligne pour les mettre en
+majuscule.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> cat /tmp/lines | go run line-filters.go
+<span class="go">HELLO</span>
+<span class="go">FILTER</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="arguments-de-ligne-de-commande.html">Arguments de ligne de commande</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>

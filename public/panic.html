@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Le Go par l'exemple</a>: Panic</title>
+    <link rel=stylesheet href="site.css">
+  </head>
+  <body>
+    <div class="example" id="panic">
+      <h2><a href="./">Le Go par l'exemple</a>: Panic</h2>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Un <code>panic</code> signifie typiquement que quelque chose
+s&rsquo;est mal passé et de manière inattendue. On l&rsquo;utilise
+principalement pour faire échouer rapidement des
+erreurs qui ne devraient normalement pas arriver, ou
+que nous ne pouvons pas traiter.</p>
+
+          </td>
+          <td class="code empty leading">
+	        
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        <a href="http://play.golang.org/p/TK3rC7eAv2"><img title="Exécuter le code" src="play.png" class="run" /></a>
+            <div class="highlight"><pre><span class="kn">package</span> <span class="nx">main</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kn">import</span> <span class="s">&quot;os&quot;</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Nous allons utilise panic dans les exemples de ce
+site pour traiter les cas imprévus. Ce
+programme-ci est le seul du site qui va paniquer
+durant son déroulement normal.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre>    <span class="nb">panic</span><span class="p">(</span><span class="s">&quot;a problem&quot;</span><span class="p">)</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>Une utilisation courante de <code>panic</code>, c&rsquo;est
+d&rsquo;abandonner si une fonction renvoie une valeur
+d&rsquo;erreur que nous ne savons (ou ne voulons) pas
+traiter. Voici un exemple de panique si on a une
+erreur inattendue lors de la création d&rsquo;un nouveau
+fichier.</p>
+
+          </td>
+          <td class="code">
+	        
+            <div class="highlight"><pre>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="s">&quot;/tmp/file&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+      </table>
+      
+      <table>
+        
+        <tr>
+          <td class="docs">
+            <p>Exécuter ce programme va amener à une panique, qui
+affiche un message d&rsquo;erreur et une trace d&rsquo;exécution,
+et qui le programme en renvoyant une valeur de status
+non nulle.</p>
+
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="gp">$</span> go run panic.go
+<span class="go">panic: a problem</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            
+          </td>
+          <td class="code leading">
+	        
+            <div class="highlight"><pre><span class="go">goroutine 1 [running]:</span>
+<span class="go">main.main()</span>
+<span class="go">	/.../panic.go:12 +0x47</span>
+<span class="go">...</span>
+<span class="go">exit status 2</span>
+</pre></div>
+
+          </td>
+        </tr>
+        
+        <tr>
+          <td class="docs">
+            <p>A noter que contrairement à certains langages qui
+utilisent des exceptions pour la gestion de nombreuses
+erreurs, en Go il est idiomatique d&rsquo;utiliser des
+valeurs de retour qui indique le status d&rsquo;erreur dès
+que possible.</p>
+
+          </td>
+          <td class="code empty">
+	        
+            
+          </td>
+        </tr>
+        
+      </table>
+      
+      
+      <p class="next">
+        Exemple suivant: <a href="defer.html">Defer</a>.
+      </p>
+      
+      <p class="footer">
+        par <a href="https://twitter.com/clemkeirua">@clemkeirua</a> de <a href="http://www.keiruaprod.fr">KeiruaProd</a> | <a href="mailto:clement@keiruaprod.fr">retours</a> | <a href="https://github.com/Keirua/gobyexample">source</a> | <a href="https://github.com/Keirua/gobyexample#license">license</a>
+      </p>
+    </div>
+  </body>
+</html>
